@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xiaoliang</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
-  <meta name="description" content="xiaoliang — 个人博客与项目展示。Agent Skills / AI 内容 / Notion 模板 / Plant-AI。">
+  <meta name="description" content="xiaoliang — 个人博客。">
   <meta property="og:title" content="xiaoliang">
-  <meta property="og:description" content="个人博客与项目展示。">
+  <meta property="og:description" content="个人博客。">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -620,7 +620,6 @@
       <div style="display:flex;align-items:center;gap:20px;">
         <div class="nav-links">
           <a class="active" data-page="home" onclick="showPage('home')">首页</a>
-          <a data-page="projects" onclick="showProjects()">项目</a>
           <a data-page="about" onclick="showPage('about')">关于</a>
           <a href="now.html">Now</a>
         </div>
@@ -639,7 +638,7 @@
     <ul class="writing-list">
       <li>
         <a href="experience.html">
-          抑郁
+          318之前
           <span class="meta">2026</span>
         </a>
       </li>
@@ -680,58 +679,16 @@
     </div>
     </div>
 
-    <!-- Projects Page -->
-    <div class="page" id="page-projects">
-      <p class="section-title" style="margin-bottom:32px;">项目</p>
-      <div class="project-grid">
-        <div class="project-card" onclick="window.open('https://github.com/521w/NetMonitor-Pro','_blank')" rel="noopener noreferrer">
-          <div class="project-name">NetMonitor-Pro</div>
-          <div class="project-desc">Android 网络监控工具，从 /proc/net 读取真实内核数据，支持 PCAP 抓包导出给 Wireshark 分析</div>
-          <div class="project-tags">
-            <span class="project-tag">TypeScript</span>
-            <span class="project-tag">React</span>
-            <span class="project-tag">Android</span>
-            <span class="project-tag">Capacitor</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-name">Plant-AI</div>
-          <div class="project-desc">基于 OpenRouter Vision API 的植物病害识别，极简 MVP — 发图 → AI 诊断 → 回复</div>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">OpenRouter</span>
-          </div>
-        </div>
-        <div class="project-card" onclick="window.open('https://github.com/521w/xiaohongshu-mcp','_blank')" rel="noopener noreferrer">
-          <div class="project-name">MCP Server 套件</div>
-          <div class="project-desc">小红书/中国热榜/抖音趋势 MCP 工具，让 AI Agent 可以直接访问中文互联网</div>
-          <div class="project-tags">
-            <span class="project-tag">Node.js</span>
-            <span class="project-tag">MCP</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-name">Notion 园林知识库</div>
-          <div class="project-desc">园林病虫害防治结构化数据库，整合案例库、政策法规、病害库、害虫监测库</div>
-          <div class="project-tags">
-            <span class="project-tag">Notion API</span>
-            <span class="project-tag">自动化</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- About Page -->
     <div class="page" id="page-about">
       <p class="section-title" style="margin-bottom:32px;">关于</p>
       <div class="about-text">
-        <p>INFP，手抖脚麻的躯体化患者。没有目标，活着就是目标。喜欢简单的东西，讨厌过度工程化。</p>
-        <p>技术栈：OpenAI-compatible API、本地模型、反向代理、工作流编排。核心兴趣是 AI Agent 的行为逻辑研究 — 不同模型对上下文、语气、任务结构的理解差异。</p>
-        <p>正在建立独立收入来源，方向：Agent Skills 定制 / AI 内容自媒体 / Notion 模板 / Plant-AI API。</p>
+        <p>INFP，手抖脚麻的躯体化患者。没有目标，活着就是目标。喜欢简单的东西，讨厌把事情搞复杂。</p>
+        <p>用 AI 工具做一些小产品，看能不能靠这些养活自己。核心兴趣是 AI 怎么用——不同的 AI 怎么理解人说的话、怎么写东西、怎么帮人做事。</p>
+        <p>正在建立独立收入来源，方向：AI 内容自媒体 / Notion 模板 / Plant-AI。</p>
         <p>还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
       </div>
       <div class="social-links">
-        <a href="https://github.com/521w" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="mailto:xiaoliang.blog@proton.me" rel="noopener noreferrer">Email</a>
         <a href="experience.html">318 之前</a>
       </div>
@@ -909,21 +866,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* ===== Projects Password Gate ===== */
-    function showProjects() {
-      if (sessionStorage.getItem('projectsUnlocked') === '000508') {
-        showPage('projects');
-        return;
-      }
-      const pw = prompt('请输入密码');
-      if (pw === '000508') {
-        sessionStorage.setItem('projectsUnlocked', '000508');
-        showPage('projects');
-      } else if (pw !== null) {
-        alert('密码错误');
-      }
-    }
-
     /* ===== Theme Toggle ===== */
     function toggleTheme() {
       document.body.classList.toggle('light');
@@ -1014,13 +956,9 @@
 
       const commands = [
         {label:'首页', hint:'Home', icon:'⌂', action:()=>showPage('home')},
-        {label:'项目', hint:'Projects', icon:'◇', action:()=>showProjects()},
         {label:'关于', hint:'About', icon:'○', action:()=>showPage('about')},
         {label:'Now', hint:'Page', icon:'●', action:()=>{window.location='now.html'}},
         {label:'318之前', hint:'Article', icon:'—', action:()=>{window.location='experience.html'}},
-        {label:'GitHub', hint:'521w', icon:'⎇', action:()=>{window.open('https://github.com/521w','_blank')}},
-        {label:'xiaohongshu-mcp', hint:'Repo', icon:'⬡', action:()=>{window.open('https://github.com/521w/xiaohongshu-mcp','_blank')}},
-        {label:'NetMonitor-Pro', hint:'Repo', icon:'⬢', action:()=>{window.open('https://github.com/521w/NetMonitor-Pro','_blank')}},
         {label:'切换主题', hint:'Theme', icon:'◐', action:()=>toggleTheme()},
       ];
 

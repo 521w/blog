@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — xiaoliang</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --text: #f0f0f5;
+      --text-muted: #8a8a95;
+      --text-dim: #5a5a65;
+      --accent: #c9a96e;
+      --line: rgba(255,255,255,0.06);
+    }
+
+    .light {
+      --bg: #fafafa;
+      --text: #171717;
+      --text-muted: #525252;
+      --text-dim: #a3a3a3;
+      --accent: #8b6914;
+      --line: rgba(0,0,0,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .code {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 96px;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .message {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    .back {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 10px 24px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .back:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="code">404</div>
+    <p class="message">这个页面不在。<br>就像有些东西，你找不到了。</p>
+    <a href="/" class="back">← 回首页</a>
+  </div>
+</body>
+</html>

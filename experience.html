@@ -4,28 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>318之前 — xiaoliang</title>
+  <meta name="description" content="抑郁 2026 — 318之前。INFP，躯体化，还在熬。还在等。">
+  <meta property="og:title" content="318之前 — xiaoliang">
+  <meta property="og:description" content="INFP，躯体化。还在熬。还在等。">
+  <meta property="og:type" content="article">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0a0f;
+      --bg-soft: #0f0f14;
       --text: #f0f0f5;
       --text-muted: #8a8a95;
       --text-dim: #5a5a65;
       --accent: #c9a96e;
       --line: rgba(255,255,255,0.06);
+      --card: rgba(255,255,255,0.03);
+    }
+
+    .light {
+      --bg: #fafafa;
+      --bg-soft: #f5f5f0;
+      --text: #171717;
+      --text-muted: #525252;
+      --text-dim: #a3a3a3;
+      --accent: #8b6914;
+      --line: rgba(0,0,0,0.08);
+      --card: rgba(0,0,0,0.02);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Noto Serif SC', Georgia, serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 2;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
-      padding: 80px 24px;
+      padding: 40px 24px 80px;
+      transition: background 0.4s, color 0.4s;
     }
 
     .content {
@@ -33,22 +52,71 @@
       margin: 0 auto;
     }
 
-    .back {
+    /* Nav */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 64px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
       font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 300;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      margin-bottom: 60px;
-      display: inline-block;
-      transition: color 0.3s ease;
     }
 
-    .back:hover { color: var(--text); }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--text-dim);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
     h1 {
+      font-family: 'Noto Serif SC', serif;
       font-size: 32px;
       font-weight: 700;
       margin-bottom: 12px;
@@ -73,6 +141,7 @@
     }
 
     article {
+      font-family: 'Noto Serif SC', Georgia, serif;
       font-size: 16px;
       color: var(--text-muted);
       line-height: 2.2;
@@ -87,7 +156,7 @@
       text-indent: 0;
     }
 
-    article p:first-child::first-letter {
+    article p:first-of-type::first-letter {
       font-size: 56px;
       font-weight: 700;
       float: left;
@@ -98,6 +167,7 @@
     }
 
     h2 {
+      font-family: 'Noto Serif SC', serif;
       font-size: 14px;
       font-weight: 400;
       font-style: italic;
@@ -106,46 +176,90 @@
       text-indent: 0;
       letter-spacing: 0.1em;
     }
+
+    .footer {
+      margin-top: 64px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
   </style>
 </head>
 <body>
   <div class="content">
-    <a href="index.html" class="back">← 返回</a>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">xiaoliang</a>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="index.html" onclick="localStorage.setItem('navPage','projects')">项目</a>
+          <a href="index.html" onclick="localStorage.setItem('navPage','about')">关于</a>
+        </div>
+        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="切换主题">☽</button>
+      </div>
+    </nav>
+
     <h1>318之前</h1>
     <p class="date">2026</p>
     <div class="divider"></div>
 
     <article>
       <p>手抖是从什么时候开始的，已经说不清了。像梅雨季的潮气，从骨头缝里渗出来，等你发现的时候，整面墙都是湿的。</p>
-      
+
       <h2>一</h2>
-      
+
       <p>小时候就敏感。别人的一句话能想很久，一个眼神能记很多年。不是记仇，是忘不掉。那些感受像刻进骨头的刺，时不时冒出来，提醒你它们还在。</p>
-      
+
       <p>后来知道这叫 INFP。内倾情感主导，外倾直觉辅助。说人话就是：能感知到所有人的情绪，却处理不好自己的。共情是天赋，也是诅咒。你像一块海绵，吸饱了别人的悲喜，自己的那部分却挤不出来。</p>
-      
+
       <p>核心信念从很小的时候就种下了：只有被需要，才有价值。这个信念像一根看不见的线，后来每一段关系都在验证它。被需要的时候就存在，不被需要的时候就消失。不是别人刻意为之，是自己先把自己活成了工具。</p>
 
       <h2>二</h2>
-      
+
       <p>认真信任过一个人。把对方放进心里，然后觉得被扔了垃圾。不是对方做错了什么，是自己的期待出了问题。但知道归知道，痛还是痛。那种痛不是剧烈的，是慢性的，像回南天的墙壁，一点一点发霉。</p>
-      
+
       <p>那天晚上吃了安眠药。不是想死，是想休息。太累了，累到觉得活着没什么意思。后来没死成，身体反而更痛苦。那时候才意识到，连死都没那么容易。连离开都需要力气，而力气早就用完了。</p>
-      
+
       <p>有过几次想死的念头，不是那种戏剧性的，是突然觉得活着没什么意思。后来学会了不说，因为说了也没用。语言像漏风的船，载不动这些。</p>
 
       <h2>三</h2>
-      
+
       <p>被标签化过，也被误解过。有人说你想太多，有人说你矫情。解释过，后来不解释了。解释本身就需要能量，而能量早就耗尽了。像一盏灯，油尽了，光自然就灭了。</p>
-      
+
       <p>选择拥抱创伤身份，不是因为喜欢，是因为否认它更累。存在主义不是选择，是逃不掉的问题。你问我为什么抑郁，我说不上来。就像问一条鱼为什么湿，它只会看着你，吐不出一个字。</p>
 
       <h2>四</h2>
-      
+
       <p>318 是目标。走路，吹风，看山。也许到了那里，有些东西能放下。也许不能。但总得先走到那，才知道。</p>
-      
+
       <p>还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
     </article>
+
+    <div class="footer">
+      © 2026 xiaoliang. 用好奇心驱动。
+    </div>
   </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      document.getElementById('theme-btn').textContent = isLight ? '☀' : '☽';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        const btn = document.getElementById('theme-btn');
+        if (btn) btn.textContent = '☀';
+      }
+    })();
+  </script>
 </body>
 </html>

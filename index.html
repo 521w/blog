@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xiaoliang</title>
+  <meta name="description" content="xiaoliang — 个人博客与项目展示。Agent Skills / AI 内容 / Notion 模板 / Plant-AI。">
+  <meta property="og:title" content="xiaoliang">
+  <meta property="og:description" content="个人博客与项目展示。">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -92,7 +96,7 @@
     .section-title {
       font-size: 10px;
       font-weight: 500;
-      letter-cier-spacing: 0.3em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--text-dim);
       margin-bottom: 24px;
@@ -204,7 +208,8 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(10, 10, 15, 0.95);
+      background: var(--bg);
+      opacity: 0.95;
       z-index: 1000;
       align-items: center;
       justify-content: center;
@@ -274,8 +279,8 @@
 
     .map-dot-tooltip {
       position: absolute;
-      background: rgba(10,10,15,0.95);
-      border: 1px solid var(--text-dim);
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
       border-radius: 6px;
       padding: 8px 12px;
       font-family: 'Inter', sans-serif;
@@ -414,16 +419,6 @@
     .theme-toggle:hover {
       border-color: var(--accent);
       color: var(--accent);
-    }
-
-    /* Section */
-    .section-title {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 24px;
     }
 
     /* Section pages (hidden by default) */
@@ -568,9 +563,7 @@
         </a>
       </li>
     </ul>
-    </div>
 
-    <!-- 照片墙 -->
     <button class="toggle-btn" id="photo-btn" onclick="toggleSection('photo')">
       <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
       照片
@@ -579,25 +572,21 @@
       <div class="photo-grid" id="photo-grid"></div>
     </div>
 
-    <!-- 地图 -->
     <button class="toggle-btn" id="map-btn" onclick="toggleSection('map')">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
       足迹
     </button>
     <div class="map-section" id="map-section">
       <p class="section-title" style="text-align:left;margin-bottom:16px">足迹</p>
-      <div class="map-container">
+      <div class="map-container" style="position:relative">
         <svg viewBox="0 0 800 560" class="china-map" id="china-map">
-          <!-- Simplified China outline -->
-          <path d="M220,100 L250,95 L280,90 L310,88 L340,90 L370,92 L400,95 L430,100 L460,105 L490,110 L520,115 L550,118 L580,120 L610,125 L640,130 L660,140 L680,155 L695,175 L705,200 L710,225 L712,250 L710,275 L705,300 L695,325 L680,345 L665,360 L645,375 L625,385 L605,395 L585,400 L565,405 L545,408 L525,410 L505,412 L485,413 L465,415 L445,415 L425,414 L405,412 L385,408 L365,405 L345,400 L325,395 L305,388 L285,380 L265,372 L245,365 L225,358 L210,350 L195,340 L182,328 L172,315 L165,300 L160,285 L157,270 L155,255 L154,240 L155,225 L156,210 L158,195 L162,180 L167,165 L174,150 L183,138 L193,125 L205,115 Z" 
+          <path d="M220,100 L250,95 L280,90 L310,88 L340,90 L370,92 L400,95 L430,100 L460,105 L490,110 L520,115 L550,118 L580,120 L610,125 L640,130 L660,140 L680,155 L695,175 L705,200 L710,225 L712,250 L710,275 L705,300 L695,325 L680,345 L665,360 L645,375 L625,385 L605,395 L585,400 L565,405 L545,408 L525,410 L505,412 L485,413 L465,415 L445,415 L425,414 L405,412 L385,408 L365,405 L345,400 L325,395 L305,388 L285,380 L265,372 L245,365 L225,358 L210,350 L195,340 L182,328 L172,315 L165,300 L160,285 L157,270 L155,255 L154,240 L155,225 L156,210 L158,195 L162,180 L167,165 L174,150 L183,138 L193,125 L205,115 Z"
                 fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-          <!-- 318 route hint -->
-          <path d="M290,370 Q310,350 330,335 Q360,315 400,305 Q450,295 510,290 Q570,288 620,290 Q660,293 690,300" 
+          <path d="M290,370 Q310,350 330,335 Q360,315 400,305 Q450,295 510,290 Q570,288 620,290 Q660,293 690,300"
                 fill="none" stroke="rgba(201,169,110,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
-          <!-- map dots container -->
           <g id="map-dots"></g>
         </svg>
-        <div class="map-dot-tooltip" id="map-tooltip">
+        <div class="map-dot-tooltip" id="map-tooltip" style="position:absolute">
           <div class="tt-name"></div>
           <div class="tt-desc"></div>
         </div>
@@ -608,13 +597,13 @@
         <span><span class="dot-future"></span>想去</span>
       </div>
     </div>
-
+    </div>
 
     <!-- Projects Page -->
     <div class="page" id="page-projects">
       <p class="section-title" style="margin-bottom:32px;">项目</p>
       <div class="project-grid">
-        <div class="project-card" onclick="window.open('https://github.com/521w/NetMonitor-Pro','_blank')">
+        <div class="project-card" onclick="window.open('https://github.com/521w/NetMonitor-Pro','_blank')" rel="noopener noreferrer">
           <div class="project-name">NetMonitor-Pro</div>
           <div class="project-desc">Android 网络监控工具，从 /proc/net 读取真实内核数据，支持 PCAP 抓包导出给 Wireshark 分析</div>
           <div class="project-tags">
@@ -661,9 +650,9 @@
         <p>还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
       </div>
       <div class="social-links">
-        <a href="https://github.com/Leonxlnx">GitHub</a>
+        <a href="https://github.com/Leonxlnx" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="#">X</a>
-        <a href="mailto:521w@github.com">Email</a>
+        <a href="mailto:xiaoliang.blog@proton.me" rel="noopener noreferrer">Email</a>
         <a href="experience.html">318 之前</a>
       </div>
     </div>

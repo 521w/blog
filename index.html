@@ -620,7 +620,7 @@
       <div style="display:flex;align-items:center;gap:20px;">
         <div class="nav-links">
           <a class="active" data-page="home" onclick="showPage('home')">首页</a>
-          <a data-page="projects" onclick="showPage('projects')">项目</a>
+          <a data-page="projects" onclick="showProjects()">项目</a>
           <a data-page="about" onclick="showPage('about')">关于</a>
           <a href="now.html">Now</a>
         </div>
@@ -909,6 +909,21 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    /* ===== Projects Password Gate ===== */
+    function showProjects() {
+      if (sessionStorage.getItem('projectsUnlocked') === '000508') {
+        showPage('projects');
+        return;
+      }
+      const pw = prompt('请输入密码');
+      if (pw === '000508') {
+        sessionStorage.setItem('projectsUnlocked', '000508');
+        showPage('projects');
+      } else if (pw !== null) {
+        alert('密码错误');
+      }
+    }
+
     /* ===== Theme Toggle ===== */
     function toggleTheme() {
       document.body.classList.toggle('light');
@@ -999,7 +1014,7 @@
 
       const commands = [
         {label:'首页', hint:'Home', icon:'⌂', action:()=>showPage('home')},
-        {label:'项目', hint:'Projects', icon:'◇', action:()=>showPage('projects')},
+        {label:'项目', hint:'Projects', icon:'◇', action:()=>showProjects()},
         {label:'关于', hint:'About', icon:'○', action:()=>showPage('about')},
         {label:'Now', hint:'Page', icon:'●', action:()=>{window.location='now.html'}},
         {label:'318之前', hint:'Article', icon:'—', action:()=>{window.location='experience.html'}},

@@ -3,176 +3,860 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leon — 开发者</title>
+  <title>xiaoliang</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Geist', 'system-ui', 'sans-serif'],
-            serif: ['Noto Serif SC', 'Georgia', 'serif'],
-          },
-          colors: {
-            ink: {
-              50: '#fafafa',
-              100: '#f5f5f5',
-              200: '#e5e5e5',
-              300: '#d4d4d4',
-              400: '#a3a3a3',
-              500: '#737373',
-              600: '#525252',
-              700: '#404040',
-              800: '#262626',
-              900: '#171717',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
-    @keyframes fadeIn { to { opacity: 1; } }
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
-    .stagger-3 { animation-delay: 0.3s; }
-    .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 30px -10px rgba(0,0,0,0.12); }
+    :root {
+      --bg: #0a0a0f;
+      --bg-soft: #0f0f14;
+      --text: #f0f0f5;
+      --text-muted: #8a8a95;
+      --text-dim: #5a5a65;
+      --accent: #c9a96e;
+      --line: rgba(255,255,255,0.06);
+      --card: rgba(255,255,255,0.03);
+    }
+
+    .light {
+      --bg: #fafafa;
+      --bg-soft: #f5f5f0;
+      --text: #171717;
+      --text-muted: #525252;
+      --text-dim: #a3a3a3;
+      --accent: #8b6914;
+      --line: rgba(0,0,0,0.08);
+      --card: rgba(0,0,0,0.02);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      padding: 40px 24px 80px;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .content {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .name {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .tagline {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 64px;
+      min-height: 80px;
+      position: relative;
+    }
+
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 20px;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto 48px;
+    }
+
+    .section-title {
+      font-size: 10px;
+      font-weight: 500;
+      letter-cier-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+
+    .writing-list { list-style: none; }
+
+    .writing-list li { margin-bottom: 12px; }
+
+    .writing-list a {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 16px;
+      position: relative;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      background: var(--card);
+      border: 1px solid transparent;
+    }
+
+    .writing-list a:hover {
+      color: var(--accent);
+      border-color: var(--line);
+      background: var(--bg-soft);
+    }
+
+    .writing-list .meta {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    /* ===== 通用展开按钮 ===== */
+    .toggle-btn {
+      background: none;
+      border: 1px solid var(--text-dim);
+      color: var(--text-dim);
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 64px;
+    }
+
+    .toggle-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .toggle-btn svg {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-btn.open svg {
+      transform: rotate(90deg);
+    }
+
+    /* ===== 照片墙 ===== */
+    .photo-wall {
+      display: none;
+      margin-top: 24px;
+    }
+
+    .photo-wall.open {
+      display: block;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      margin-top: 24px;
+    }
+
+    .photo-grid a {
+      display: block;
+      aspect-ratio: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: grayscale(30%);
+    }
+
+    .photo-grid a:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+
+    .photo-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 15, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .photo-lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-img.loaded {
+      opacity: 1;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 24px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.3s;
+    }
+
+    .lightbox-close:hover { color: var(--text); }
+
+    /* ===== 地图模块 ===== */
+    .map-section {
+      display: none;
+      margin-top: 24px;
+    }
+
+    .map-section.open {
+      display: block;
+    }
+
+    .map-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .china-map {
+      width: 100%;
+      height: auto;
+    }
+
+    .map-dot {
+      cursor: pointer;
+      transition: r 0.3s ease;
+    }
+
+    .map-dot:hover {
+      filter: drop-shadow(0 0 6px var(--accent));
+    }
+
+    .map-dot-tooltip {
+      position: absolute;
+      background: rgba(10,10,15,0.95);
+      border: 1px solid var(--text-dim);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    .map-dot-tooltip.visible {
+      opacity: 1;
+    }
+
+    .map-dot-tooltip .tt-name {
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .map-dot-tooltip .tt-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .map-legend {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .map-legend span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .map-legend .dot-home {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .map-legend .dot-visited {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+    }
+
+    .map-legend .dot-future {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(201,169,110,0.4);
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 2px; }
+
+    /* Nav */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 64px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--text-dim);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Section */
+    .section-title {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+
+    /* Section pages (hidden by default) */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* Projects */
+    .project-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .project-card {
+      padding: 16px 20px;
+      border-radius: 8px;
+      background: var(--card);
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      border-color: var(--line);
+      background: var(--bg-soft);
+    }
+
+    .project-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--card);
+      color: var(--text-dim);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+
+    /* About */
+    .about-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 2;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 64px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-dim);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    @media (max-width: 640px) {
+      .tagline { font-size: 18px; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
-<body class="bg-ink-50 text-ink-900 font-sans antialiased selection:bg-ink-900 selection:text-white">
+<body>
 
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-ink-50/80 backdrop-blur-md border-b border-ink-200/50">
-    <nav class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="text-sm font-semibold tracking-tight text-ink-900">Leon</a>
-      <div class="flex items-center gap-6 text-sm text-ink-500">
-        <a href="#writing" class="hover:text-ink-900 transition-colors">文章</a>
-        <a href="#projects" class="hover:text-ink-900 transition-colors">项目</a>
-        <a href="#about" class="hover:text-ink-900 transition-colors">关于</a>
+  <!-- 照片灯箱 -->
+  <div class="photo-lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  </div>
+
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="#" class="nav-logo" onclick="showPage('home'); return false;">xiaoliang</a>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div class="nav-links">
+          <a class="active" data-page="home" onclick="showPage('home')">首页</a>
+          <a data-page="projects" onclick="showPage('projects')">项目</a>
+          <a data-page="about" onclick="showPage('about')">关于</a>
+        </div>
+        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="切换主题">☽</button>
       </div>
     </nav>
-  </header>
 
-  <!-- Hero -->
-  <section class="min-h-[70vh] flex items-center pt-20">
-    <div class="max-w-3xl mx-auto px-6 py-20">
-      <p class="fade-in stagger-1 text-ink-500 text-sm mb-4 tracking-wide">开发者 / 安全研究员</p>
-      <h1 class="fade-in stagger-2 text-4xl md:text-5xl font-serif font-bold leading-tight mb-6 text-ink-900">
-        在代码与好奇心的<br>交界处探索
-      </h1>
-      <p class="fade-in stagger-3 text-ink-600 text-lg leading-relaxed max-w-xl">
-        写代码、做产品、研究 AI Agent 的行为逻辑。<br>
-        相信简单的东西更有力量。
-      </p>
+    <!-- Home Page -->
+    <div class="page active" id="page-home">
+      <p class="name">xiaoliang</p>
+      <p class="tagline" id="typewriter-container"><span id="typewriter-text"></span><span class="typewriter-cursor"></span></p>
+      <div class="divider"></div>
+
+    <p class="section-title">文章</p>
+    <ul class="writing-list">
+      <li>
+        <a href="experience.html">
+          抑郁
+          <span class="meta">2026</span>
+        </a>
+      </li>
+    </ul>
     </div>
-  </section>
 
-  <!-- Writing -->
-  <section id="writing" class="py-20">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-sm font-semibold text-ink-400 uppercase tracking-widest mb-10">文章</h2>
-      <div class="space-y-1">
-        <a href="#" class="hover-lift block group py-5 px-4 -mx-4 rounded-lg">
-          <div class="flex items-baseline justify-between gap-4">
-            <h3 class="text-ink-900 font-medium group-hover:text-ink-700 transition-colors">NetMonitor-Pro 的 60 轮审查之路</h3>
-            <span class="text-ink-400 text-sm shrink-0">2026.05</span>
-          </div>
-          <p class="text-ink-500 text-sm mt-1">从 60+ 个 bug 到上架，一个 Android 网络监控工具的迭代记录</p>
-        </a>
-        <a href="#" class="hover-lift block group py-5 px-4 -mx-4 rounded-lg">
-          <div class="flex items-baseline justify-between gap-4">
-            <h3 class="text-ink-900 font-medium group-hover:text-ink-700 transition-colors">用 OpenRouter Vision API 做植物病害识别</h3>
-            <span class="text-ink-400 text-sm shrink-0">2026.04</span>
-          </div>
-          <p class="text-ink-500 text-sm mt-1">不需要训练模型，直接调用多模态 API 实现 MVP</p>
-        </a>
-        <a href="#" class="hover-lift block group py-5 px-4 -mx-4 rounded-lg">
-          <div class="flex items-baseline justify-between gap-4">
-            <h3 class="text-ink-900 font-medium group-hover:text-ink-700 transition-colors">MCP Server 变现实践</h3>
-            <span class="text-ink-400 text-sm shrink-0">2026.03</span>
-          </div>
-          <p class="text-ink-500 text-sm mt-1">从想法到 GitHub 发布，AI Agent 工具链的商业模式</p>
-        </a>
+    <!-- 照片墙 -->
+    <button class="toggle-btn" id="photo-btn" onclick="toggleSection('photo')">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      照片
+    </button>
+    <div class="photo-wall" id="photo-wall">
+      <div class="photo-grid" id="photo-grid"></div>
+    </div>
+
+    <!-- 地图 -->
+    <button class="toggle-btn" id="map-btn" onclick="toggleSection('map')">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+      足迹
+    </button>
+    <div class="map-section" id="map-section">
+      <p class="section-title" style="text-align:left;margin-bottom:16px">足迹</p>
+      <div class="map-container">
+        <svg viewBox="0 0 800 560" class="china-map" id="china-map">
+          <!-- Simplified China outline -->
+          <path d="M220,100 L250,95 L280,90 L310,88 L340,90 L370,92 L400,95 L430,100 L460,105 L490,110 L520,115 L550,118 L580,120 L610,125 L640,130 L660,140 L680,155 L695,175 L705,200 L710,225 L712,250 L710,275 L705,300 L695,325 L680,345 L665,360 L645,375 L625,385 L605,395 L585,400 L565,405 L545,408 L525,410 L505,412 L485,413 L465,415 L445,415 L425,414 L405,412 L385,408 L365,405 L345,400 L325,395 L305,388 L285,380 L265,372 L245,365 L225,358 L210,350 L195,340 L182,328 L172,315 L165,300 L160,285 L157,270 L155,255 L154,240 L155,225 L156,210 L158,195 L162,180 L167,165 L174,150 L183,138 L193,125 L205,115 Z" 
+                fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+          <!-- 318 route hint -->
+          <path d="M290,370 Q310,350 330,335 Q360,315 400,305 Q450,295 510,290 Q570,288 620,290 Q660,293 690,300" 
+                fill="none" stroke="rgba(201,169,110,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
+          <!-- map dots container -->
+          <g id="map-dots"></g>
+        </svg>
+        <div class="map-dot-tooltip" id="map-tooltip">
+          <div class="tt-name"></div>
+          <div class="tt-desc"></div>
+        </div>
+      </div>
+      <div class="map-legend">
+        <span><span class="dot-home"></span>家</span>
+        <span><span class="dot-visited"></span>去过</span>
+        <span><span class="dot-future"></span>想去</span>
       </div>
     </div>
-  </section>
 
-  <!-- Projects -->
-  <section id="projects" class="py-20 border-t border-ink-200">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-sm font-semibold text-ink-400 uppercase tracking-widest mb-10">项目</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        <a href="#" class="hover-lift block p-6 rounded-xl border border-ink-200 bg-white">
-          <h3 class="font-semibold text-ink-900 mb-1">NetMonitor-Pro</h3>
-          <p class="text-ink-500 text-sm leading-relaxed">Android 网络监控工具，支持 PCAP 抓包导出</p>
-          <div class="flex gap-2 mt-3">
-            <span class="text-xs px-2 py-0.5 bg-ink-100 text-ink-600 rounded">Kotlin</span>
-            <span class="text-xs px-2 py-0.5 bg-ink-100 text-ink-600 rounded">Android</span>
-          </div>
-        </a>
-        <a href="#" class="hover-lift block p-6 rounded-xl border border-ink-200 bg-white">
-          <h3 class="font-semibold text-ink-900 mb-1">Plant-AI</h3>
-          <p class="text-ink-500 text-sm leading-relaxed">基于 Vision API 的植物病害识别，极简 MVP</p>
-          <div class="flex gap-2 mt-3">
-            <span class="text-xs px-2 py-0.5 bg-ink-100 text-ink-600 rounded">Python</span>
-            <span class="text-xs px-2 py-0.5 bg-ink-100 text-ink-600 rounded">OpenRouter</span>
-          </div>
-        </a>
-        <a href="#" class="hover-lift block p-6 rounded-xl border border-ink-200 bg-white">
-          <h3 class="font-semibold text-ink-900 mb-1">MCP Server 套件</h3>
-          <p class="text-ink-500 text-sm leading-relaxed">小红书/中国热榜/抖音趋势 MCP 工具</p>
-          <div class="flex gap-2 mt-3">
-            <span class="text-xs px-2 py-0.5 bg-ink-100 text-ink-600 rounded">Node.js</span>
-            <span class="text-xs px-2 py-0.5 bg-ink-100 text-ink-600 rounded">MCP</span>
-          </div>
-        </a>
-        <a href="#" class="hover-lift block p-6 rounded-xl border border-ink-200 bg-white">
-          <h3 class="font-semibold text-ink-900 mb-1">Notion 园林知识库</h3>
-          <p class="text-ink-500 text-sm leading-relaxed">园林病虫害防治结构化数据库</p>
-          <div class="flex gap-2 mt-3">
-            <span class="text-xs px-2 py-0.5 bg-ink-100 text-ink-600 rounded">Notion</span>
-            <span class="text-xs px-2 py-0.5 bg-ink-100 text-ink-600 rounded">API</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- About -->
-  <section id="about" class="py-20 border-t border-ink-200">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-sm font-semibold text-ink-400 uppercase tracking-widest mb-10">关于</h2>
-      <div class="max-w-2xl">
-        <p class="text-ink-700 leading-relaxed mb-4">
-          INFP，手抖脚麻的躯体化患者，318 是人生目标。喜欢简单的东西，讨厌过度工程化。
-        </p>
-        <p class="text-ink-700 leading-relaxed mb-4">
-          技术栈：OpenAI-compatible API、本地模型、反向代理、工作流编排。核心兴趣是 AI Agent 的行为逻辑研究——不同模型对上下文、语气、任务结构的理解差异。
-        </p>
-        <p class="text-ink-700 leading-relaxed">
-          正在建立独立收入来源，方向：Agent Skills 定制 / AI 内容自媒体 / Notion 模板 / Plant-AI API。
-        </p>
-        <div class="flex gap-4 mt-8 text-sm">
-          <a href="https://github.com/Leonxlnx" class="text-ink-500 hover:text-ink-900 transition-colors">GitHub</a>
-          <span class="text-ink-300">·</span>
-          <a href="#" class="text-ink-500 hover:text-ink-900 transition-colors">X</a>
-          <span class="text-ink-300">·</span>
-          <a href="#" class="text-ink-500 hover:text-ink-900 transition-colors">Email</a>
+    <!-- Projects Page -->
+    <div class="page" id="page-projects">
+      <p class="section-title" style="margin-bottom:32px;">项目</p>
+      <div class="project-grid">
+        <div class="project-card" onclick="window.open('https://github.com/521w/NetMonitor-Pro','_blank')">
+          <div class="project-name">NetMonitor-Pro</div>
+          <div class="project-desc">Android 网络监控工具，从 /proc/net 读取真实内核数据，支持 PCAP 抓包导出给 Wireshark 分析</div>
+          <div class="project-tags">
+            <span class="project-tag">TypeScript</span>
+            <span class="project-tag">React</span>
+            <span class="project-tag">Android</span>
+            <span class="project-tag">Capacitor</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-name">Plant-AI</div>
+          <div class="project-desc">基于 OpenRouter Vision API 的植物病害识别，极简 MVP — 发图 → AI 诊断 → 回复</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">OpenRouter</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-name">MCP Server 套件</div>
+          <div class="project-desc">小红书/中国热榜/抖音趋势 MCP 工具，让 AI Agent 可以直接访问中文互联网</div>
+          <div class="project-tags">
+            <span class="project-tag">Node.js</span>
+            <span class="project-tag">MCP</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-name">Notion 园林知识库</div>
+          <div class="project-desc">园林病虫害防治结构化数据库，整合案例库、政策法规、病害库、害虫监测库</div>
+          <div class="project-tags">
+            <span class="project-tag">Notion API</span>
+            <span class="project-tag">自动化</span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="py-8 border-t border-ink-200">
-    <div class="max-w-3xl mx-auto px-6 text-center text-ink-400 text-sm">
-      © 2026 Leon. 用好奇心驱动。
+    <!-- About Page -->
+    <div class="page" id="page-about">
+      <p class="section-title" style="margin-bottom:32px;">关于</p>
+      <div class="about-text">
+        <p>INFP，手抖脚麻的躯体化患者，318 是人生目标。喜欢简单的东西，讨厌过度工程化。</p>
+        <p>技术栈：OpenAI-compatible API、本地模型、反向代理、工作流编排。核心兴趣是 AI Agent 的行为逻辑研究 — 不同模型对上下文、语气、任务结构的理解差异。</p>
+        <p>正在建立独立收入来源，方向：Agent Skills 定制 / AI 内容自媒体 / Notion 模板 / Plant-AI API。</p>
+        <p>还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/Leonxlnx">GitHub</a>
+        <a href="#">X</a>
+        <a href="mailto:hello@xiaoliangzou.eu.cc">Email</a>
+        <a href="experience.html">318 之前</a>
+      </div>
     </div>
-  </footer>
 
+    <div class="footer">
+      © 2026 xiaoliang. 用好奇心驱动。
+    </div>
+  </div>
+
+  <script>
+    /* ===== 相册灯箱 ===== */
+    const photos = [
+      'https://picsum.photos/800/800?random=10',
+      'https://picsum.photos/800/800?random=11',
+      'https://picsum.photos/800/800?random=12',
+      'https://picsum.photos/800/800?random=13',
+      'https://picsum.photos/800/800?random=14',
+      'https://picsum.photos/800/800?random=15',
+      'https://picsum.photos/800/800?random=16',
+      'https://picsum.photos/800/800?random=17',
+      'https://picsum.photos/800/800?random=18',
+    ];
+
+    function toggleSection(name) {
+      const sec = document.getElementById(name + '-section');
+      const btn = document.getElementById(name + '-btn');
+      sec.classList.toggle('open');
+      btn.classList.toggle('open');
+      if (name === 'photo' && sec.classList.contains('open') && document.getElementById('photo-grid').children.length === 0) {
+        renderPhotos();
+      }
+    }
+
+    function renderPhotos() {
+      const grid = document.getElementById('photo-grid');
+      photos.forEach(src => {
+        const a = document.createElement('a');
+        a.href = '#';
+        a.onclick = () => openLightbox(src);
+        const img = document.createElement('img');
+        img.src = src;
+        img.loading = 'lazy';
+        a.appendChild(img);
+        grid.appendChild(a);
+      });
+    }
+
+    function openLightbox(src) {
+      const lb  = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.classList.remove('loaded');
+      img.src = src;
+      img.onload = () => img.classList.add('loaded');
+      lb.classList.add('open');
+    }
+
+    function closeLightbox(e) {
+      if (e.target === e.currentTarget || e.target.classList.contains('lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('open');
+      }
+    }
+
+    /* 键盘关闭灯箱 */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox'), currentTarget: document.getElementById('lightbox') });
+    });
+
+    /* ===== 打字机效果 ===== */
+    const lines = [
+      'INFP，躯体化，318 是人生目标。',
+      '只有被需要，才有价值。',
+      '像冬天的种子，不知道春天会不会来。',
+      '还在熬。还在等。',
+      '手抖是从什么时候开始的，已经说不清了。',
+      '318 是目标。走路，吹风，看山。',
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const textEl = document.getElementById('typewriter-text');
+    const typeSpeed = 80;
+    const deleteSpeed = 40;
+    const pauseEnd = 2000;
+    const pauseStart = 600;
+
+    function type() {
+      const current = lines[lineIndex];
+
+      if (!isDeleting) {
+        textEl.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          setTimeout(() => { isDeleting = true; type(); }, pauseEnd);
+          return;
+        }
+        setTimeout(type, typeSpeed);
+      } else {
+        textEl.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          lineIndex = (lineIndex + 1) % lines.length;
+          setTimeout(type, pauseStart);
+          return;
+        }
+        setTimeout(type, deleteSpeed);
+      }
+    }
+
+    setTimeout(type, 500);
+
+    /* ===== 地图 ===== */
+    const mapPlaces = [
+      { x: 560, y: 280, name: '营口', desc: '2000.06 · 出生', type: 'home' },
+      { x: 480, y: 430, name: '北京', desc: '', type: 'visited' },
+      { x: 420, y: 460, name: '上海', desc: '', type: 'visited' },
+      { x: 340, y: 420, name: '成都', desc: '', type: 'visited' },
+      { x: 540, y: 310, name: '武汉', desc: '', type: 'visited' },
+      { x: 500, y: 400, name: '杭州', desc: '', type: 'visited' },
+      { x: 240, y: 350, name: '拉萨', desc: '318 · 未来', type: 'future' },
+      { x: 360, y: 440, name: '昆明', desc: '', type: 'visited' },
+      { x: 600, y: 380, name: '广州', desc: '', type: 'visited' },
+      { x: 440, y: 340, name: '重庆', desc: '', type: 'visited' },
+    ];
+
+    const dotsGroup = document.getElementById('map-dots');
+    const tooltip = document.getElementById('map-tooltip');
+    const mapSvg = document.getElementById('china-map');
+
+    mapPlaces.forEach(p => {
+      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot.setAttribute('cx', p.x);
+      dot.setAttribute('cy', p.y);
+      dot.setAttribute('r', p.type === 'home' ? 5 : 3.5);
+      dot.setAttribute('fill', p.type === 'home' ? 'var(--accent)' : p.type === 'visited' ? 'rgba(255,255,255,0.5)' : 'rgba(201,169,110,0.5)');
+      dot.setAttribute('class', 'map-dot');
+      dot.setAttribute('data-name', p.name);
+      dot.setAttribute('data-desc', p.desc);
+
+      dot.addEventListener('mouseenter', (e) => showTooltip(e, p));
+      dot.addEventListener('mouseleave', hideTooltip);
+      dotsGroup.appendChild(dot);
+    });
+
+    function showTooltip(e, p) {
+      if (!p.desc) return;
+      tooltip.querySelector('.tt-name').textContent = p.name;
+      tooltip.querySelector('.tt-desc').textContent = p.desc;
+      tooltip.classList.add('visible');
+      const rect = mapSvg.getBoundingClientRect();
+      const svgX = p.x * (rect.width / 800);
+      const svgY = p.y * (rect.height / 560);
+      tooltip.style.left = (rect.left + svgX + 12) + 'px';
+      tooltip.style.top = (rect.top + svgY - 16) + 'px';
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove('visible');
+    }
+
+    /* ===== Page Navigation ===== */
+    function showPage(name) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Show target
+      const target = document.getElementById('page-' + name);
+      if (target) target.classList.add('active');
+      // Update nav
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === name);
+      });
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ===== Theme Toggle ===== */
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      document.getElementById('theme-btn').textContent = isLight ? '☀' : '☽';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    // Restore theme on load
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        const btn = document.getElementById('theme-btn');
+        if (btn) btn.textContent = '☀';
+      }
+    })();
+  </script>
 </body>
 </html>

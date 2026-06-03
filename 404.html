@@ -87,6 +87,25 @@
     <div class="code">404</div>
     <p class="message">这个页面不在。<br>就像有些东西，你找不到了。</p>
     <a href="/" class="back">← 回首页</a>
+    <div style="margin-top:32px;">
+      <button class="theme-toggle" onclick="toggleTheme()" style="background:none;border:1px solid var(--line);color:var(--text-dim);width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:14px;transition:all 0.3s;" onmouseenter="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseleave="this.style.borderColor='var(--line)';this.style.color='var(--text-dim)'" title="切换主题">☽</button>
+    </div>
   </div>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      const btns = document.querySelectorAll('button');
+      btns.forEach(b => { if (b.textContent === '☽' || b.textContent === '☀') b.textContent = isLight ? '☀' : '☽'; });
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+    (function() {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light');
+        const btns = document.querySelectorAll('button');
+        btns.forEach(b => { if (b.textContent === '☽') b.textContent = '☀'; });
+      }
+    })();
+  </script>
 </body>
 </html>

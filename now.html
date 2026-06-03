@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now — xiaoliang</title>
+  <meta name="description" content="现在在做什么、在读什么、在想什么。">
+  <meta property="og:title" content="Now — xiaoliang">
+  <meta property="og:description" content="现在在做什么、在读什么、在想什么。">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-soft: #0f0f14;
+      --text: #f0f0f5;
+      --text-muted: #8a8a95;
+      --text-dim: #5a5a65;
+      --accent: #c9a96e;
+      --line: rgba(255,255,255,0.06);
+      --card: rgba(255,255,255,0.03);
+    }
+
+    .light {
+      --bg: #fafafa;
+      --bg-soft: #f5f5f0;
+      --text: #171717;
+      --text-muted: #525252;
+      --text-dim: #a3a3a3;
+      --accent: #8b6914;
+      --line: rgba(0,0,0,0.08);
+      --card: rgba(0,0,0,0.02);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      padding: 40px 24px 80px;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .content { max-width: 640px; margin: 0 auto; }
+
+    /* Nav */
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 64px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo {
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 24px; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .theme-toggle {
+      background: none; border: 1px solid var(--line); color: var(--text-dim);
+      width: 32px; height: 32px; border-radius: 6px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; transition: all 0.3s;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    h1 {
+      font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700;
+      margin-bottom: 8px; letter-spacing: 0.04em; color: var(--text);
+    }
+    .updated {
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300;
+      letter-spacing: 0.15em; color: var(--text-dim); margin-bottom: 48px;
+    }
+    .divider { width: 48px; height: 1px; background: var(--accent); margin-bottom: 48px; }
+
+    .section { margin-bottom: 48px; }
+    .section-label {
+      font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .section p {
+      font-family: 'Noto Serif SC', serif; font-size: 16px;
+      color: var(--text-muted); line-height: 2.2; margin-bottom: 12px;
+    }
+    .section a { color: var(--accent); text-decoration: none; }
+    .section a:hover { text-decoration: underline; }
+
+    .footer {
+      margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line);
+      text-align: center; font-size: 11px; color: var(--text-dim); font-weight: 300;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">xiaoliang</a>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="index.html" onclick="localStorage.setItem('navPage','projects')">项目</a>
+          <a href="index.html" onclick="localStorage.setItem('navPage','about')">关于</a>
+          <a href="now.html" class="active">Now</a>
+        </div>
+        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="切换主题">☽</button>
+      </div>
+    </nav>
+
+    <h1>Now</h1>
+    <p class="updated">更新于 2026.06</p>
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">在做</div>
+      <p>Agent Skills 定制化，把 Hermes 技能框架做成可售卖的产品。</p>
+      <p>维护 <a href="https://github.com/521w/xiaohongshu-mcp" target="_blank">xiaohongshu-mcp</a> 和 <a href="https://github.com/521w/NetMonitor-Pro" target="_blank">NetMonitor-Pro</a>，一边写一边学。</p>
+      <p>Plant-AI 极简 MVP — 发图 → AI 诊断 → 回复，不想过度工程化。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">在读</div>
+      <p>没有在读书。注意力被打碎了，读不了长的东西。偶尔看论文，看 AI Agent 相关的技术博客。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">在想</div>
+      <p>318 什么时候能走。躯体化什么时候能好。能不能靠自己做的东西养活自己。</p>
+      <p>被需要和被抛弃之间的那条线，到底是谁画的。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">状态</div>
+      <p>还在熬。还在等。手还是抖的，但还在写代码。</p>
+      <p>成都，潮湿的夏天又来了。</p>
+    </div>
+
+    <div class="footer">
+      © 2026 xiaoliang. <a href="https://nownownow.com/about" style="color:var(--accent);text-decoration:none;">/now</a> 页面理念来自 indie web。
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      document.getElementById('theme-btn').textContent = isLight ? '☀' : '☽';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        const btn = document.getElementById('theme-btn');
+        if (btn) btn.textContent = '☀';
+      }
+    })();
+  </script>
+</body>
+</html>

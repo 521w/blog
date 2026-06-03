@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xiaoliang</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
   <meta name="description" content="xiaoliang — 个人博客与项目展示。Agent Skills / AI 内容 / Notion 模板 / Plant-AI。">
   <meta property="og:title" content="xiaoliang">
   <meta property="og:description" content="个人博客与项目展示。">
@@ -519,6 +520,73 @@
       font-weight: 300;
     }
 
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: var(--accent); z-index: 9999;
+      width: 0%; transition: width 0.1s linear;
+    }
+
+    /* Particle Canvas */
+    #particles {
+      position: fixed; inset: 0; z-index: -1;
+      pointer-events: none; opacity: 0.5;
+      transition: opacity 0.4s;
+    }
+    .light #particles { opacity: 0.2; }
+
+    /* Page Transitions */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeUp 0.35s ease; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Status Line */
+    .status-line {
+      font-family: 'Inter', sans-serif; font-size: 10px;
+      font-weight: 300; letter-spacing: 0.15em;
+      color: var(--text-dim); text-align: center;
+      margin-top: -36px; margin-bottom: 48px;
+    }
+
+    /* Command Palette */
+    .cmd-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6); z-index: 10000;
+      align-items: flex-start; justify-content: center;
+      padding-top: 20vh;
+    }
+    .cmd-overlay.open { display: flex; }
+    .cmd-box {
+      width: 100%; max-width: 480px;
+      background: var(--bg-soft); border: 1px solid var(--line);
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .cmd-input {
+      width: 100%; padding: 16px 20px;
+      background: transparent; border: none; outline: none;
+      font-family: 'Inter', sans-serif; font-size: 15px;
+      color: var(--text); border-bottom: 1px solid var(--line);
+    }
+    .cmd-input::placeholder { color: var(--text-dim); }
+    .cmd-results { max-height: 300px; overflow-y: auto; }
+    .cmd-result {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 20px; cursor: pointer; transition: background 0.15s;
+      font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-muted);
+      border: none; background: none; width: 100%; text-align: left;
+    }
+    .cmd-result:hover, .cmd-result.selected { background: var(--card); color: var(--text); }
+    .cmd-result .cmd-icon { font-size: 16px; width: 24px; text-align: center; flex-shrink: 0; }
+    .cmd-result .cmd-label { flex: 1; }
+    .cmd-result .cmd-hint {
+      font-size: 10px; color: var(--text-dim);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
     @media (max-width: 640px) {
       .tagline { font-size: 18px; }
       .photo-grid { grid-template-columns: repeat(2, 1fr); }
@@ -526,6 +594,17 @@
   </style>
 </head>
 <body>
+
+  <div class="progress-bar" id="progress-bar"></div>
+  <canvas id="particles"></canvas>
+
+  <!-- 命令面板 -->
+  <div class="cmd-overlay" id="cmd-overlay">
+    <div class="cmd-box">
+      <input class="cmd-input" id="cmd-input" type="text" placeholder="搜索页面、项目、链接..." autofocus>
+      <div class="cmd-results" id="cmd-results"></div>
+    </div>
+  </div>
 
   <!-- 照片灯箱 -->
   <div class="photo-lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -543,6 +622,7 @@
           <a class="active" data-page="home" onclick="showPage('home')">首页</a>
           <a data-page="projects" onclick="showPage('projects')">项目</a>
           <a data-page="about" onclick="showPage('about')">关于</a>
+          <a href="now.html">Now</a>
         </div>
         <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="切换主题">☽</button>
       </div>
@@ -551,6 +631,7 @@
     <!-- Home Page -->
     <div class="page active" id="page-home">
       <p class="name">xiaoliang</p>
+      <p class="status-line">成都 · 手还是抖的，但还在熬</p>
       <p class="tagline" id="typewriter-container"><span id="typewriter-text"></span><span class="typewriter-cursor"></span></p>
       <div class="divider"></div>
 
@@ -844,6 +925,144 @@
         const btn = document.getElementById('theme-btn');
         if (btn) btn.textContent = '☀';
       }
+    })();
+
+    // Restore nav page on load (from experience/now navigation)
+    (function() {
+      const page = localStorage.getItem('navPage');
+      if (page && page !== 'home') {
+        localStorage.removeItem('navPage');
+        showPage(page);
+      }
+    })();
+
+    /* ===== Progress Bar ===== */
+    (function() {
+      const bar = document.getElementById('progress-bar');
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+      }, {passive: true});
+    })();
+
+    /* ===== Particles ===== */
+    (function() {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const count = 40;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.2 + 0.4,
+          vx: (Math.random() - 0.5) * 0.15,
+          vy: (Math.random() - 0.5) * 0.15 - 0.08,
+          o: Math.random() * 0.5 + 0.2
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const isLight = document.body.classList.contains('light');
+        const color = isLight ? '0,0,0' : '255,255,255';
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + color + ',' + p.o + ')';
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* ===== Command Palette ===== */
+    (function() {
+      const overlay = document.getElementById('cmd-overlay');
+      const input = document.getElementById('cmd-input');
+      const results = document.getElementById('cmd-results');
+
+      const commands = [
+        {label:'首页', hint:'Home', icon:'⌂', action:()=>showPage('home')},
+        {label:'项目', hint:'Projects', icon:'◇', action:()=>showPage('projects')},
+        {label:'关于', hint:'About', icon:'○', action:()=>showPage('about')},
+        {label:'Now', hint:'Page', icon:'●', action:()=>{window.location='now.html'}},
+        {label:'318之前', hint:'Article', icon:'—', action:()=>{window.location='experience.html'}},
+        {label:'GitHub', hint:'521w', icon:'⎇', action:()=>{window.open('https://github.com/521w','_blank')}},
+        {label:'xiaohongshu-mcp', hint:'Repo', icon:'⬡', action:()=>{window.open('https://github.com/521w/xiaohongshu-mcp','_blank')}},
+        {label:'NetMonitor-Pro', hint:'Repo', icon:'⬢', action:()=>{window.open('https://github.com/521w/NetMonitor-Pro','_blank')}},
+        {label:'切换主题', hint:'Theme', icon:'◐', action:()=>toggleTheme()},
+      ];
+
+      let selected = -1;
+
+      function render(filter) {
+        const q = (filter||'').toLowerCase();
+        const filtered = commands.filter(c => c.label.toLowerCase().includes(q) || c.hint.toLowerCase().includes(q));
+        results.innerHTML = filtered.map((c,i) =>
+          '<button class="cmd-result'+(i===selected?' selected':'')+'" data-idx="'+i+'">'+
+          '<span class="cmd-icon">'+c.icon+'</span>'+
+          '<span class="cmd-label">'+c.label+'</span>'+
+          '<span class="cmd-hint">'+c.hint+'</span></button>'
+        ).join('');
+        results.querySelectorAll('.cmd-result').forEach(el => {
+          el.addEventListener('click', () => {
+            const idx = parseInt(el.dataset.idx);
+            if (filtered[idx]) { close(); filtered[idx].action(); }
+          });
+        });
+        return filtered;
+      }
+
+      function open() {
+        overlay.classList.add('open');
+        input.value = '';
+        selected = -1;
+        render('');
+        setTimeout(()=>input.focus(), 50);
+      }
+
+      function close() {
+        overlay.classList.remove('open');
+      }
+
+      input.addEventListener('input', () => {
+        selected = -1;
+        render(input.value);
+      });
+
+      input.addEventListener('keydown', (e) => {
+        const items = results.querySelectorAll('.cmd-result');
+        if (e.key === 'ArrowDown') { e.preventDefault(); selected = Math.min(selected+1, items.length-1); render(input.value); }
+        if (e.key === 'ArrowUp') { e.preventDefault(); selected = Math.max(selected-1, -1); render(input.value); }
+        if (e.key === 'Enter' && selected >= 0) {
+          const el = items[selected];
+          const idx = parseInt(el.dataset.idx);
+          const filtered = commands.filter(c => c.label.toLowerCase().includes(input.value.toLowerCase()) || c.hint.toLowerCase().includes(input.value.toLowerCase()));
+          if (filtered[idx]) { close(); filtered[idx].action(); }
+        }
+        if (e.key === 'Escape') close();
+      });
+
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey||e.metaKey) && e.key === 'k') { e.preventDefault(); open(); }
+      });
     })();
   </script>
 </body>

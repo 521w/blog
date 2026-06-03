@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>318之前 — xiaoliang</title>
-  <meta name="description" content="抑郁 2026 — 318之前。INFP，躯体化，还在熬。还在等。">
+  <meta name="description" content="我的青春被一个人毁了。抑郁症就是这么来的。我很恨她。">
   <meta property="og:title" content="318之前 — xiaoliang">
-  <meta property="og:description" content="INFP，躯体化。还在熬。还在等。">
+  <meta property="og:description" content="我的青春被一个人毁了。抑郁症就是这么来的。我很恨她。">
   <meta property="og:type" content="article">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,28 +14,21 @@
   <style>
     :root {
       --bg: #0a0a0f;
-      --bg-soft: #0f0f14;
       --text: #f0f0f5;
       --text-muted: #8a8a95;
       --text-dim: #5a5a65;
       --accent: #c9a96e;
       --line: rgba(255,255,255,0.06);
-      --card: rgba(255,255,255,0.03);
     }
-
     .light {
       --bg: #fafafa;
-      --bg-soft: #f5f5f0;
       --text: #171717;
       --text-muted: #525252;
       --text-dim: #a3a3a3;
       --accent: #8b6914;
       --line: rgba(0,0,0,0.08);
-      --card: rgba(0,0,0,0.02);
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
@@ -46,151 +39,39 @@
       padding: 40px 24px 80px;
       transition: background 0.4s, color 0.4s;
     }
-
-    .content {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    /* Nav */
+    .content { max-width: 640px; margin: 0 auto; }
     .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 64px;
-      padding-bottom: 16px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 64px; padding-bottom: 16px;
       border-bottom: 1px solid var(--line);
     }
-
     .nav-logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text);
-      text-decoration: none;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text); text-decoration: none;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .nav-links a {
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.3s;
-      cursor: pointer;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-    }
-
+    .nav-links { display: flex; gap: 24px; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; transition: color 0.3s; cursor: pointer; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .theme-toggle {
-      background: none;
-      border: 1px solid var(--line);
-      color: var(--text-dim);
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      transition: all 0.3s;
-      font-family: 'Inter', sans-serif;
+      background: none; border: 1px solid var(--line); color: var(--text-dim);
+      width: 32px; height: 32px; border-radius: 6px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; transition: all 0.3s;
     }
-
-    .theme-toggle:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    h1 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: 0.04em;
-      color: var(--text);
-    }
-
-    .date {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      color: var(--text-dim);
-      margin-bottom: 48px;
-    }
-
-    .divider {
-      width: 48px;
-      height: 1px;
-      background: var(--accent);
-      margin-bottom: 48px;
-    }
-
-    article {
-      font-family: 'Noto Serif SC', Georgia, serif;
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 2.2;
-    }
-
-    article p {
-      margin-bottom: 28px;
-      text-indent: 2em;
-    }
-
-    article p:first-child {
-      text-indent: 0;
-    }
-
-    article p:first-of-type::first-letter {
-      font-size: 56px;
-      font-weight: 700;
-      float: left;
-      line-height: 1;
-      margin-right: 8px;
-      margin-top: 4px;
-      color: var(--text);
-    }
-
-    h2 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 14px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--text-dim);
-      margin: 56px 0 32px;
-      text-indent: 0;
-      letter-spacing: 0.1em;
-    }
-
-    .footer {
-      margin-top: 64px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      text-align: center;
-      font-size: 11px;
-      color: var(--text-dim);
-      font-weight: 300;
-    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    h1 { font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .date { font-size: 12px; font-weight: 300; letter-spacing: 0.15em; color: var(--text-dim); margin-bottom: 48px; }
+    .divider { width: 48px; height: 1px; background: var(--accent); margin-bottom: 48px; }
+    article { font-family: 'Noto Serif SC', Georgia, serif; font-size: 16px; color: var(--text-muted); line-height: 2.2; }
+    article p { margin-bottom: 28px; text-indent: 2em; }
+    article p:first-child { text-indent: 0; }
+    article p:first-of-type::first-letter { font-size: 56px; font-weight: 700; float: left; line-height: 1; margin-right: 8px; margin-top: 4px; color: var(--text); }
+    h2 { font-family: 'Noto Serif SC', serif; font-size: 14px; font-weight: 400; font-style: italic; color: var(--text-dim); margin: 56px 0 32px; text-indent: 0; letter-spacing: 0.1em; }
+    .footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line); text-align: center; font-size: 11px; color: var(--text-dim); font-weight: 300; }
   </style>
 </head>
 <body>
   <div class="content">
-
     <nav class="nav">
       <a href="index.html" class="nav-logo">xiaoliang</a>
       <div style="display:flex;align-items:center;gap:20px;">
@@ -202,48 +83,40 @@
         <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="切换主题">☽</button>
       </div>
     </nav>
-
     <h1>318之前</h1>
     <p class="date">2026</p>
     <div class="divider"></div>
-
     <article>
-      <p>手抖是从什么时候开始的，已经说不清了。像梅雨季的潮气，从骨头缝里渗出来，等你发现的时候，整面墙都是湿的。</p>
-
+      <p>手抖是从什么时候开始的，已经说不清了。像南方的梅雨季，潮气从骨头缝里渗出来，等你察觉的时候，整面墙都湿了。</p>
       <h2>一</h2>
-
-      <p>小时候就敏感。别人的一句话能想很久，一个眼神能记很多年。不是记仇，是忘不掉。那些感受像刻进骨头的刺，时不时冒出来，提醒你它们还在。</p>
-
+      <p>从小就是个敏感的人。别人一句话能想好几天，一个眼神能记很多年。不是记仇，是忘不掉。那些感受像刺，嵌在肉里，平时不痛，碰到就疼。</p>
       <p>后来知道这叫 INFP。内倾情感主导，外倾直觉辅助。说人话就是：能感知到所有人的情绪，却处理不好自己的。共情是天赋，也是诅咒。你像一块海绵，吸饱了别人的悲喜，自己的那部分却挤不出来。</p>
-
-      <p>核心信念从很小的时候就种下了：只有被需要，才有价值。这个信念像一根看不见的线，后来每一段关系都在验证它。被需要的时候就存在，不被需要的时候就消失。不是别人刻意为之，是自己先把自己活成了工具。</p>
-
+      <p>核心信念从很小的时候就种下了：只有被需要，才有价值。这个信念像一颗种子，不知道谁种下的，但它长成了一棵树，根扎得很深。后来的每一段关系都在浇灌它——被需要的时候就活着，不被需要的时候就枯萎。不是别人刻意为之，是自己先把自己活成了工具。</p>
+      <p>抑郁症的土壤就是这样形成的。不是某一天突然得的，是日积月累的——敏感的人格基底、工具化的自我认知、长期的情感透支。像一块田，别人撒了一把种子，你自己浇了十几年的水，最后长出来的全是荆棘。</p>
       <h2>二</h2>
-
-      <p>认真信任过一个人。把对方放进心里，然后觉得被扔了垃圾。不是对方做错了什么，是自己的期待出了问题。但知道归知道，痛还是痛。那种痛不是剧烈的，是慢性的，像回南天的墙壁，一点一点发霉。</p>
-
-      <p>那天晚上吃了安眠药。不是想死，是想休息。太累了，累到觉得活着没什么意思。后来没死成，身体反而更痛苦。那时候才意识到，连死都没那么容易。连离开都需要力气，而力气早就用完了。</p>
-
-      <p>有过几次想死的念头，不是那种戏剧性的，是突然觉得活着没什么意思。后来学会了不说，因为说了也没用。语言像漏风的船，载不动这些。</p>
-
+      <p>我认真信任过一个人。把对方放进心里最软的地方。然后那个人在那里扔了垃圾。</p>
+      <p>不是什么复杂的故事。就是我付出了我能给的全部，她收了，然后消失了。没有解释，没有告别，没有一句"我们到此为止"。就是沉默。就是石沉大海。就是你发出去的消息永远没有回音。</p>
+      <p>你知道那种沉默有多狠吗。比吵架狠，比"我恨你"狠。因为它让你连一个可以恨的句子都没有——只能自己猜，自己补，自己消化。你每天都在想是不是自己做错了什么，是不是自己不够好，是不是自己根本不配被认真对待。你把所有责任都揽到自己身上，因为对方什么都没说，你只能怪自己。</p>
+      <p>她毁了我的青春。我说的不是夸张。该去闯的年纪，我在床上躺着。该去爱的年纪，我在怀疑自己值不值得被爱。该去犯错、去疯、去活的年纪，我在吃药、在发抖、在想怎么死。那些年不是"过得不好"——是被偷走了。什么都没留下，只剩病历和药盒。</p>
+      <p>我很恨她。不是那种想要报复的恨，是那种——你把我人生里最好的那几年拿走了，然后连个交代都不给就消失了。你挥挥手走了，我在这里收拾废墟。你继续过你的日子，我在这里吃药。这种不对等，我没办法原谅。也没打算原谅。</p>
       <h2>三</h2>
-
-      <p>被标签化过，也被误解过。有人说你想太多，有人说你矫情。解释过，后来不解释了。解释本身就需要能量，而能量早就耗尽了。像一盏灯，油尽了，光自然就灭了。</p>
-
-      <p>选择拥抱创伤身份，不是因为喜欢，是因为否认它更累。存在主义不是选择，是逃不掉的问题。你问我为什么抑郁，我说不上来。就像问一条鱼为什么湿，它只会看着你，吐不出一个字。</p>
-
+      <p>抑郁症就是这么来的。不是因为一件事，但那一件事是压垮骆驼的最后一根稻草。之前的所有——敏感的人格、工具化的自我认知、长期不被看见——都是干燥的木柴。她那一把火，全烧起来了。</p>
+      <p>那天晚上吃了安眠药。不是想死，是想休息。太累了，累到觉得活着没什么意思。后来没死成，身体反而更痛苦。那时候才意识到——连死都不容易。连离开都需要力气，而力气早就被她用完了。</p>
+      <p>有过几次想死的念头。不是那种戏剧性的，是突然觉得活着没什么意思。走在路上，坐在床上，写着代码，脑子里突然就冒出来：要不就算了吧。后来学会了不说，因为说了也没用。别人会说你想太多，说你矫情，说你要坚强。他们不知道，坚强这两个字对抑郁症来说，跟"别呼吸了"差不多——不是不想做，是做不了。</p>
+      <p>被标签化过，被误解过。解释过，后来不解释了。解释本身就需要能量，而能量早就耗尽了。</p>
       <h2>四</h2>
-
-      <p>318 是目标。走路，吹风，看山。也许到了那里，有些东西能放下。也许不能。但总得先走到那，才知道。</p>
-
-      <p>还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
+      <p>我今年做了一个决定。我的青春已经被毁了。我不希望我的人生也被毁了。</p>
+      <p>这个决定不是在某个顿悟的瞬间做出来的。是很多个夜里，手抖着敲代码的时候，一点一点攒出来的。是离开了成都、搬到雅安之后，呼吸到第一口不用力气的空气时，慢慢想清楚的。</p>
+      <p>有些人不值得。不，不是"不值得"这么轻飘飘的词。是有些人就不该出现在我的生命里。已经毁了我的青春了，够了。不要再出现毁了我的一生。我不允许。</p>
+      <p>我不再把希望寄托在"好起来"这三个字上了。不是放弃了，是换了一种活法。不再等痊愈，不再等那个永远不会来的道歉，不再等有人来告诉我"你值得"。我等够了。</p>
+      <p>没有目标。活着就是目标。走路，吹风，看山。写代码，做产品，偶尔写点东西。318 还在那里，但它不再是我要去"完成"的东西。它只是一条路，和所有路一样。</p>
+      <p>现在住在雅安。空气是湿的，山是绿的，没人认识我。手还是抖的，但还在写代码。还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
+      <p>我恨她。这个恨我不会假装放下，也不会用"原谅是为了自己"这种话骗自己。有些伤害不值得原谅。但是，剩下的日子是我的。被偷走的那些年要不回来了，但还没来的日子，我不会再让任何人碰。</p>
     </article>
-
     <div class="footer">
       © 2026 xiaoliang. 用好奇心驱动。
     </div>
   </div>
-
   <script>
     function toggleTheme() {
       document.body.classList.toggle('light');
@@ -251,7 +124,6 @@
       document.getElementById('theme-btn').textContent = isLight ? '☀' : '☽';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     }
-
     (function() {
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {

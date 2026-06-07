@@ -34,6 +34,10 @@
     article p { margin:0 0 28px; text-indent:2em; text-wrap:pretty; }
     article p:first-child { text-indent:0; }
     article h2 { margin:58px 0 28px; color:var(--dim); font-size:15px; font-weight:500; font-style:italic; letter-spacing:.18em; }
+
+    .article-pager { display:flex; justify-content:space-between; gap:1rem; margin:3rem 0 2rem; padding-top:1.5rem; border-top:1px solid var(--line); flex-wrap:wrap; }
+    .article-pager a, .pager-empty { color:var(--muted); text-decoration:none; font-size:.9rem; }
+    .article-pager a:hover { color:var(--text); }
     .footer { margin-top:68px; padding-top:18px; border-top:1px solid var(--line); text-align:center; color:var(--dim); font-size:11px; }
     a { color:var(--accent); text-decoration:none; }
     a:hover { text-decoration:underline; }
@@ -72,6 +76,10 @@
       <p>这些事都不宏大，但它们让我感觉自己不是完全停住了。哪怕只往前挪一点，也算还在动。</p>
       <p>雅安这几天没有给我答案。它只是安静地在那里，让我慢慢喘气。</p>
 </article>
+    <nav class="article-pager" aria-label="文章导航">
+      <a href="/experience">← 上一篇：318之前</a>
+      <a href="/ordinary">下一篇：普通人的日子 →</a>
+    </nav>
     <footer class="footer"><a href="/">回到首页</a> · © 2026 xiaoliang. 用好奇心驱动。</footer>
   </main>
   <script>

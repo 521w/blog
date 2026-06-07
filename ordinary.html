@@ -34,6 +34,10 @@
     article p { margin:0 0 28px; text-indent:2em; text-wrap:pretty; }
     article p:first-child { text-indent:0; }
     article h2 { margin:58px 0 28px; color:var(--dim); font-size:15px; font-weight:500; font-style:italic; letter-spacing:.18em; }
+
+    .article-pager { display:flex; justify-content:space-between; gap:1rem; margin:3rem 0 2rem; padding-top:1.5rem; border-top:1px solid var(--line); flex-wrap:wrap; }
+    .article-pager a, .pager-empty { color:var(--muted); text-decoration:none; font-size:.9rem; }
+    .article-pager a:hover { color:var(--text); }
     .footer { margin-top:68px; padding-top:18px; border-top:1px solid var(--line); text-align:center; color:var(--dim); font-size:11px; }
     a { color:var(--accent); text-decoration:none; }
     a:hover { text-decoration:underline; }
@@ -71,6 +75,10 @@
       <p>我不想把自己包装成什么特别的人。痛过就是痛过，离开就是离开，手抖就是手抖。</p>
       <p>如果这个网站要留下什么，那就留下一个普通人真实活过的痕迹：在雅安，在 318 起点附近，还在慢慢把自己拼回来。</p>
     </article>
+    <nav class="article-pager" aria-label="文章导航">
+      <a href="/yaan">← 上一篇：雅安这几天</a>
+      <a href="/travel">下一篇：旅行照片 →</a>
+    </nav>
     <footer class="footer"><a href="/">回到首页</a> · © 2026 xiaoliang. 用好奇心驱动。</footer>
   </main>
   <script>

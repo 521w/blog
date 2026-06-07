@@ -35,6 +35,10 @@
     article p:first-child { text-indent:0; }
     article p:first-of-type::first-letter { float:left; margin:.08em .12em 0 0; color:var(--text); font-size:3.7em; line-height:.82; font-weight:650; }
     article h2 { margin:58px 0 28px; color:var(--dim); font-size:15px; font-weight:500; font-style:italic; letter-spacing:.18em; }
+
+    .article-pager { display:flex; justify-content:space-between; gap:1rem; margin:3rem 0 2rem; padding-top:1.5rem; border-top:1px solid var(--line); flex-wrap:wrap; }
+    .article-pager a, .pager-empty { color:var(--muted); text-decoration:none; font-size:.9rem; }
+    .article-pager a:hover { color:var(--text); }
     .footer { margin-top:68px; padding-top:18px; border-top:1px solid var(--line); text-align:center; color:var(--dim); font-size:11px; }
     a { color:var(--accent); text-decoration:none; }
     a:hover { text-decoration:underline; }
@@ -87,6 +91,10 @@
       <p>现在住在雅安。空气是湿的，山是绿的，没人认识我。手还是抖的，但还在做事。还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
       <p>我恨她。这个恨我不会假装放下，也不会用"原谅是为了自己"这种话骗自己。有些伤害不值得原谅。但是，剩下的日子是我的。被偷走的那些年要不回来了，但还没来的日子，我不会再让任何人碰。</p>
     </article>
+    <nav class="article-pager" aria-label="文章导航">
+      <span class="pager-empty">上一篇：没有了</span>
+      <a href="/yaan">下一篇：雅安这几天 →</a>
+    </nav>
     <footer class="footer"><a href="/">回到首页</a> · © 2026 xiaoliang. 用好奇心驱动。</footer>
   </main>
   <script>

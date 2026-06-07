@@ -684,8 +684,8 @@
       <p class="section-title" style="margin-bottom:32px;">关于</p>
       <div class="about-text">
         <p>INFP，手抖脚麻的躯体化患者。没有目标，活着就是目标。喜欢简单的东西，讨厌把事情搞复杂。</p>
-        <p>用 AI 工具做一些小产品，看能不能靠这些养活自己。核心兴趣是 AI 怎么用——不同的 AI 怎么理解人说的话、怎么写东西、怎么帮人做事。</p>
-        <p>正在建立独立收入来源，方向：AI 内容自媒体 / Notion 模板 / Plant-AI。</p>
+        <p>用 AI 工具做一些小东西，看能不能靠这些养活自己。核心兴趣是 AI 怎么用：不同的 AI 怎么理解人说的话、怎么写东西、怎么帮人做事。</p>
+        <p>正在试着建立一点独立收入，方向大概是 AI 内容、Notion 模板、Plant-AI。</p>
         <p>还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
       </div>
       <div class="social-links">
@@ -701,17 +701,7 @@
 
   <script>
     /* ===== 相册灯箱 ===== */
-    const photos = [
-      'https://picsum.photos/800/800?random=10',
-      'https://picsum.photos/800/800?random=11',
-      'https://picsum.photos/800/800?random=12',
-      'https://picsum.photos/800/800?random=13',
-      'https://picsum.photos/800/800?random=14',
-      'https://picsum.photos/800/800?random=15',
-      'https://picsum.photos/800/800?random=16',
-      'https://picsum.photos/800/800?random=17',
-      'https://picsum.photos/800/800?random=18',
-    ];
+    const photos = [];
 
     function toggleSection(name) {
       const sec = document.getElementById(name + '-section');
@@ -725,6 +715,11 @@
 
     function renderPhotos() {
       const grid = document.getElementById('photo-grid');
+      if (!photos.length) {
+        grid.style.display = 'block';
+        grid.innerHTML = '<p style="color:var(--text-dim);font-size:13px;line-height:2;">照片先空着。不是所有东西都要放出来。</p>';
+        return;
+      }
       photos.forEach(src => {
         const a = document.createElement('a');
         a.href = '#';

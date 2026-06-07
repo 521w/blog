@@ -28,7 +28,8 @@
     .theme { width:32px; height:32px; border:1px solid var(--line); border-radius:8px; display:grid; place-items:center; }
     h1 { margin:0 0 10px; font-family:ui-serif, Georgia, "Times New Roman", "Songti SC", serif; font-size:clamp(38px,8vw,58px); line-height:1.08; letter-spacing:-.025em; }
     .date { margin:0 0 42px; color:var(--dim); font-size:12px; letter-spacing:.16em; text-transform:uppercase; }
-    .rule { width:48px; height:1px; background:var(--accent); margin:0 0 48px; }
+    .rule { width:48px; height:1px; background:var(--accent); margin:0 0 34px; }
+    .note { margin:0 0 44px; padding:16px 18px; border:1px solid var(--line); border-radius:16px; color:var(--muted); font-family:ui-serif, Georgia, "Times New Roman", "Songti SC", serif; font-size:16px; line-height:1.9; }
     article { color:var(--muted); font-family:ui-serif, Georgia, "Times New Roman", "Songti SC", serif; font-size:17px; line-height:2.08; }
     article p { margin:0 0 28px; text-indent:2em; text-wrap:pretty; }
     article p:first-child { text-indent:0; }
@@ -57,6 +58,7 @@
     <h1>318之前</h1>
     <p class="date">2026</p>
     <div class="rule"></div>
+    <p class="note">这不是励志故事。只是把一些没办法再装作不存在的东西，放在这里。</p>
     <article>
       <p>手抖是从什么时候开始的，已经说不清了。像南方的梅雨季，潮气从骨头缝里渗出来，等你察觉的时候，整面墙都湿了。</p>
       <h2>一</h2>
@@ -84,7 +86,7 @@
       <p>现在住在雅安。空气是湿的，山是绿的，没人认识我。手还是抖的，但还在做事。还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
       <p>我恨她。这个恨我不会假装放下，也不会用"原谅是为了自己"这种话骗自己。有些伤害不值得原谅。但是，剩下的日子是我的。被偷走的那些年要不回来了，但还没来的日子，我不会再让任何人碰。</p>
     </article>
-    <footer class="footer">© 2026 xiaoliang. 用好奇心驱动。</footer>
+    <footer class="footer"><a href="/">回到首页</a> · © 2026 xiaoliang. 用好奇心驱动。</footer>
   </main>
   <script>
     const body=document.body,btn=document.getElementById('theme-btn');

@@ -4,1014 +4,266 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xiaoliang</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
-  <meta name="description" content="xiaoliang — 个人博客。">
+  <meta name="description" content="xiaoliang 的个人博客。雅安，AI 使用者，还在熬，也还在做事。">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0b0b10">
+  <link rel="canonical" href="https://blog.xiaoliangzou.eu.cc/">
   <meta property="og:title" content="xiaoliang">
-  <meta property="og:description" content="个人博客。">
+  <meta property="og:description" content="个人博客。雅安，AI 使用者，还在熬，也还在做事。">
   <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta property="og:url" content="https://blog.xiaoliangzou.eu.cc/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b0b10'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
   <style>
     :root {
-      --bg: #0a0a0f;
-      --bg-soft: #0f0f14;
-      --text: #f0f0f5;
-      --text-muted: #8a8a95;
-      --text-dim: #5a5a65;
+      color-scheme: dark;
+      --bg: #0b0b10;
+      --bg-soft: #111118;
+      --text: #ededf2;
+      --muted: #a1a1aa;
+      --dim: #6f6f7a;
       --accent: #c9a96e;
-      --line: rgba(255,255,255,0.06);
-      --card: rgba(255,255,255,0.03);
+      --line: rgba(237,237,242,0.08);
+      --panel: rgba(237,237,242,0.035);
     }
-
     .light {
-      --bg: #fafafa;
-      --bg-soft: #f5f5f0;
-      --text: #171717;
-      --text-muted: #525252;
-      --text-dim: #a3a3a3;
-      --accent: #8b6914;
-      --line: rgba(0,0,0,0.08);
-      --card: rgba(0,0,0,0.02);
+      color-scheme: light;
+      --bg: #f7f6f2;
+      --bg-soft: #efede7;
+      --text: #1c1b19;
+      --muted: #5d5a53;
+      --dim: #938e82;
+      --accent: #7d5f18;
+      --line: rgba(28,27,25,0.1);
+      --panel: rgba(28,27,25,0.035);
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
+      margin: 0;
       min-height: 100vh;
-      padding: 40px 24px 80px;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    .content {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .name {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 48px;
-      text-align: center;
-    }
-
-    .tagline {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 20px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 64px;
-      min-height: 80px;
-      position: relative;
-    }
-
-    .typewriter-cursor {
-      display: inline-block;
-      width: 2px;
-      height: 20px;
-      background: var(--accent);
-      margin-left: 2px;
-      vertical-align: text-bottom;
-      animation: blink 0.8s infinite;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-
-    .divider {
-      width: 32px;
-      height: 1px;
-      background: var(--accent);
-      margin: 0 auto 48px;
-    }
-
-    .section-title {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 24px;
-    }
-
-    .writing-list { list-style: none; }
-
-    .writing-list li { margin-bottom: 12px; }
-
-    .writing-list a {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 15px;
+      padding: 40px 22px 72px;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(201,169,110,0.12), transparent 34rem),
+        var(--bg);
       color: var(--text);
-      text-decoration: none;
-      padding: 12px 16px;
-      position: relative;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      background: var(--card);
-      border: 1px solid transparent;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease;
     }
-
-    .writing-list a:hover {
-      color: var(--accent);
-      border-color: var(--line);
-      background: var(--bg-soft);
-    }
-
-    .writing-list .meta {
-      font-size: 12px;
-      color: var(--text-dim);
-      font-weight: 300;
-    }
-
-    /* ===== 通用展开按钮 ===== */
-    .toggle-btn {
-      background: none;
-      border: 1px solid var(--text-dim);
-      color: var(--text-dim);
-      font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 64px;
-    }
-
-    .toggle-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .toggle-btn svg {
-      width: 12px;
-      height: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .toggle-btn.open svg {
-      transform: rotate(90deg);
-    }
-
-    /* ===== 照片墙 ===== */
-    .photo-section {
-      display: none;
-      margin-top: 24px;
-    }
-
-    .photo-section.open {
-      display: block;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
-      margin-top: 24px;
-    }
-
-    .photo-grid a {
-      display: block;
-      aspect-ratio: 1;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .photo-grid img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease, filter 0.5s ease;
-      filter: grayscale(30%);
-    }
-
-    .photo-grid a:hover img {
-      transform: scale(1.05);
-      filter: grayscale(0%);
-    }
-
-    .photo-lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      opacity: 0.95;
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-    }
-
-    .photo-lightbox.open {
-      display: flex;
-    }
-
-    .lightbox-img {
-      max-width: 90vw;
-      max-height: 90vh;
-      object-fit: contain;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .lightbox-img.loaded {
-      opacity: 1;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: none;
-      border: none;
-      color: var(--text-dim);
-      font-size: 24px;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      transition: color 0.3s;
-    }
-
-    .lightbox-close:hover { color: var(--text); }
-
-    /* ===== 地图模块 ===== */
-    .map-section {
-      display: none;
-      margin-top: 24px;
-    }
-
-    .map-section.open {
-      display: block;
-    }
-
-    .map-container {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .china-map {
-      width: 100%;
-      height: auto;
-    }
-
-    .map-dot {
-      cursor: pointer;
-      transition: r 0.3s ease;
-    }
-
-    .map-dot:hover {
-      filter: drop-shadow(0 0 6px var(--accent));
-    }
-
-    .map-dot-tooltip {
-      position: absolute;
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 8px 12px;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      color: var(--text);
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-      z-index: 10;
-    }
-
-    .map-dot-tooltip.visible {
-      opacity: 1;
-    }
-
-    .map-dot-tooltip .tt-name {
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 2px;
-    }
-
-    .map-dot-tooltip .tt-desc {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .map-legend {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 16px;
-      font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-    }
-
-    .map-legend span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .map-legend .dot-home {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .map-legend .dot-visited {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.4);
-    }
-
-    .map-legend .dot-future {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(201,169,110,0.4);
-    }
-
-    /* scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 2px; }
-
-    /* Nav */
+    a { color: inherit; }
+    .wrap { width: min(100%, 680px); margin: 0 auto; }
     .nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 64px;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: clamp(52px, 10vw, 92px);
       padding-bottom: 16px;
       border-bottom: 1px solid var(--line);
     }
-
-    .nav-logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+    .logo {
       color: var(--text);
       text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      font-family: 'Inter', sans-serif;
       font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
+      font-weight: 650;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
     }
-
-    .nav-links a {
-      color: var(--text-dim);
+    .nav-right { display: flex; align-items: center; gap: 18px; }
+    .nav-links { display: flex; align-items: center; gap: 18px; }
+    .nav-links a, .theme {
+      color: var(--dim);
       text-decoration: none;
-      transition: color 0.3s;
+      font: inherit;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      border: 0;
+      background: transparent;
       cursor: pointer;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: inherit;
-      letter-spacing: inherit;
-      text-transform: inherit;
+      transition: color 0.2s ease, border-color 0.2s ease;
     }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--line);
-      color: var(--text-dim);
+    .nav-links a:hover, .nav-links a.active, .theme:hover { color: var(--text); }
+    .theme {
       width: 32px;
       height: 32px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      transition: all 0.3s;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Section pages (hidden by default) */
-    .page { display: none; }
-    .page.active { display: block; }
-
-    /* Projects */
-    .project-grid {
-      display: grid;
-      gap: 12px;
-    }
-
-    .project-card {
-      padding: 16px 20px;
+      border: 1px solid var(--line);
       border-radius: 8px;
-      background: var(--card);
-      border: 1px solid transparent;
-      transition: all 0.3s;
-      cursor: pointer;
+      display: grid;
+      place-items: center;
     }
-
-    .project-card:hover {
-      border-color: var(--line);
-      background: var(--bg-soft);
+    .hero { margin-bottom: clamp(56px, 9vw, 84px); }
+    .kicker {
+      margin: 0 0 22px;
+      color: var(--dim);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
-
-    .project-name {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 4px;
+    h1 {
+      margin: 0;
+      max-width: 11ch;
+      font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", "Noto Serif CJK SC", serif;
+      font-size: clamp(42px, 11vw, 82px);
+      font-weight: 650;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
     }
-
-    .project-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
+    .lead {
+      max-width: 31rem;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(18px, 3.4vw, 22px);
+      line-height: 1.9;
+      text-wrap: pretty;
     }
-
-    .project-tags {
-      display: flex;
-      gap: 6px;
-      margin-top: 10px;
-      flex-wrap: wrap;
+    .pulse {
+      display: inline-block;
+      width: 0.5em;
+      height: 0.5em;
+      margin-right: 0.55em;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(201,169,110,0.13);
+      vertical-align: 0.08em;
     }
-
-    .project-tag {
-      font-size: 10px;
-      letter-spacing: 0.05em;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: var(--card);
-      color: var(--text-dim);
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
+    .grid { display: grid; gap: 42px; }
+    .section { scroll-margin-top: 32px; }
+    .section-title {
+      margin: 0 0 16px;
+      color: var(--dim);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
-
-    /* About */
-    .about-text {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 2;
-    }
-
-    .about-text p {
-      margin-bottom: 20px;
-    }
-
-    .social-links {
-      display: flex;
+    .writing-list { list-style: none; margin: 0; padding: 0; }
+    .writing-list a {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
       gap: 16px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-    }
-
-    .social-links a {
-      font-size: 13px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .social-links a:hover {
-      color: var(--accent);
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: 64px;
-      padding-top: 16px;
+      padding: 18px 0;
       border-top: 1px solid var(--line);
+      text-decoration: none;
+    }
+    .writing-list li:last-child a { border-bottom: 1px solid var(--line); }
+    .writing-title { font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", serif; font-size: 20px; }
+    .writing-meta { color: var(--dim); font-size: 12px; }
+    .writing-list a:hover .writing-title { color: var(--accent); }
+    .about {
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+    }
+    .about p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: 16px;
+      line-height: 2;
+      text-wrap: pretty;
+    }
+    .about p:last-child { margin-bottom: 0; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .links a {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .links a:hover { border-color: var(--accent); color: var(--accent); }
+    .footer {
+      margin-top: 72px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--dim);
       text-align: center;
       font-size: 11px;
-      color: var(--text-dim);
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
     }
-
-    /* Progress Bar */
-    .progress-bar {
-      position: fixed; top: 0; left: 0; height: 2px;
-      background: var(--accent); z-index: 9999;
-      width: 0%; transition: width 0.1s linear;
+    @media (max-width: 560px) {
+      body { padding-inline: 18px; }
+      .nav { align-items: flex-start; }
+      .nav-right { gap: 12px; }
+      .nav-links { gap: 12px; }
+      .writing-list a { grid-template-columns: 1fr; gap: 4px; }
+      .about { padding: 18px; border-radius: 14px; }
     }
-
-    /* Particle Canvas */
-    #particles {
-      position: fixed; inset: 0; z-index: -1;
-      pointer-events: none; opacity: 0.5;
-      transition: opacity 0.4s;
-    }
-    .light #particles { opacity: 0.2; }
-
-    /* Page Transitions */
-    .page { display: none; }
-    .page.active { display: block; animation: fadeUp 0.35s ease; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Status Line */
-    .status-line {
-      font-family: 'Inter', sans-serif; font-size: 10px;
-      font-weight: 300; letter-spacing: 0.15em;
-      color: var(--text-dim); text-align: center;
-      margin-top: -36px; margin-bottom: 48px;
-    }
-
-    /* Command Palette */
-    .cmd-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.6); z-index: 10000;
-      align-items: flex-start; justify-content: center;
-      padding-top: 20vh;
-    }
-    .cmd-overlay.open { display: flex; }
-    .cmd-box {
-      width: 100%; max-width: 480px;
-      background: var(--bg-soft); border: 1px solid var(--line);
-      border-radius: 12px; overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .cmd-input {
-      width: 100%; padding: 16px 20px;
-      background: transparent; border: none; outline: none;
-      font-family: 'Inter', sans-serif; font-size: 15px;
-      color: var(--text); border-bottom: 1px solid var(--line);
-    }
-    .cmd-input::placeholder { color: var(--text-dim); }
-    .cmd-results { max-height: 300px; overflow-y: auto; }
-    .cmd-result {
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 20px; cursor: pointer; transition: background 0.15s;
-      font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-muted);
-      border: none; background: none; width: 100%; text-align: left;
-    }
-    .cmd-result:hover, .cmd-result.selected { background: var(--card); color: var(--text); }
-    .cmd-result .cmd-icon { font-size: 16px; width: 24px; text-align: center; flex-shrink: 0; }
-    .cmd-result .cmd-label { flex: 1; }
-    .cmd-result .cmd-hint {
-      font-size: 10px; color: var(--text-dim);
-      letter-spacing: 0.1em; text-transform: uppercase;
-    }
-
-    @media (max-width: 640px) {
-      .tagline { font-size: 18px; }
-      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
 <body>
-
-  <div class="progress-bar" id="progress-bar"></div>
-  <canvas id="particles"></canvas>
-
-  <!-- 命令面板 -->
-  <div class="cmd-overlay" id="cmd-overlay">
-    <div class="cmd-box">
-      <input class="cmd-input" id="cmd-input" type="text" placeholder="搜索页面、链接..." autofocus>
-      <div class="cmd-results" id="cmd-results"></div>
-    </div>
-  </div>
-
-  <!-- 照片灯箱 -->
-  <div class="photo-lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="">
-  </div>
-
-  <div class="content">
-
-    <!-- Navigation -->
-    <nav class="nav">
-      <a href="#" class="nav-logo" onclick="showPage('home'); return false;">xiaoliang</a>
-      <div style="display:flex;align-items:center;gap:20px;">
+  <main class="wrap">
+    <nav class="nav" aria-label="主导航">
+      <a class="logo" href="/">xiaoliang</a>
+      <div class="nav-right">
         <div class="nav-links">
-          <a class="active" data-page="home" onclick="showPage('home')">首页</a>
-          <a data-page="about" onclick="showPage('about')">关于</a>
-          <a href="now.html">Now</a>
+          <a class="active" href="/">首页</a>
+          <a href="#about">关于</a>
+          <a href="/now">Now</a>
         </div>
-        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="切换主题">☽</button>
+        <button class="theme" id="theme-btn" type="button" aria-label="切换主题">☽</button>
       </div>
     </nav>
 
-    <!-- Home Page -->
-    <div class="page active" id="page-home">
-      <p class="name">xiaoliang</p>
-      <p class="status-line">雅安 · 手还是抖的，但还在熬</p>
-      <p class="tagline" id="typewriter-container"><span id="typewriter-text"></span><span class="typewriter-cursor"></span></p>
-      <div class="divider"></div>
+    <section class="hero" aria-labelledby="site-title">
+      <p class="kicker"><span class="pulse"></span>雅安 · 还在做事</p>
+      <h1 id="site-title">没有目标，活着就是目标。</h1>
+      <p class="lead">INFP，AI 使用者。手还是抖的，但还在熬，也还在试着用自己能做到的方式，把日子往前推一点。</p>
+    </section>
 
-    <p class="section-title">文章</p>
-    <ul class="writing-list">
-      <li>
-        <a href="experience.html">
-          318之前
-          <span class="meta">2026</span>
-        </a>
-      </li>
-    </ul>
+    <div class="grid">
+      <section class="section" aria-labelledby="writing-title">
+        <h2 class="section-title" id="writing-title">文章</h2>
+        <ul class="writing-list">
+          <li>
+            <a href="/experience">
+              <span class="writing-title">318之前</span>
+              <span class="writing-meta">2026</span>
+            </a>
+          </li>
+        </ul>
+      </section>
 
-    <button class="toggle-btn" id="photo-btn" onclick="toggleSection('photo')">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-      照片
-    </button>
-    <div class="photo-section" id="photo-section">
-      <div class="photo-grid" id="photo-grid"></div>
-    </div>
-
-    <button class="toggle-btn" id="map-btn" onclick="toggleSection('map')">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
-      足迹
-    </button>
-    <div class="map-section" id="map-section">
-      <p class="section-title" style="text-align:left;margin-bottom:16px">足迹</p>
-      <div class="map-container" style="position:relative">
-        <svg viewBox="0 0 800 560" class="china-map" id="china-map">
-          <path d="M220,100 L250,95 L280,90 L310,88 L340,90 L370,92 L400,95 L430,100 L460,105 L490,110 L520,115 L550,118 L580,120 L610,125 L640,130 L660,140 L680,155 L695,175 L705,200 L710,225 L712,250 L710,275 L705,300 L695,325 L680,345 L665,360 L645,375 L625,385 L605,395 L585,400 L565,405 L545,408 L525,410 L505,412 L485,413 L465,415 L445,415 L425,414 L405,412 L385,408 L365,405 L345,400 L325,395 L305,388 L285,380 L265,372 L245,365 L225,358 L210,350 L195,340 L182,328 L172,315 L165,300 L160,285 L157,270 L155,255 L154,240 L155,225 L156,210 L158,195 L162,180 L167,165 L174,150 L183,138 L193,125 L205,115 Z"
-                fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-          <path d="M290,370 Q310,350 330,335 Q360,315 400,305 Q450,295 510,290 Q570,288 620,290 Q660,293 690,300"
-                fill="none" stroke="rgba(201,169,110,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
-          <g id="map-dots"></g>
-        </svg>
-        <div class="map-dot-tooltip" id="map-tooltip" style="position:absolute">
-          <div class="tt-name"></div>
-          <div class="tt-desc"></div>
+      <section class="section" id="about" aria-labelledby="about-title">
+        <h2 class="section-title" id="about-title">关于</h2>
+        <div class="about">
+          <p>住在雅安。离开成都之后，空气变湿了，身体还是会报警，但人慢慢能喘一口气。</p>
+          <p>用 AI 工具做一些小东西，看能不能靠它们养活自己。喜欢简单、真实、能直接用的东西，讨厌把生活包装成漂亮简历。</p>
+          <p>还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
+          <div class="links" aria-label="链接">
+            <a href="/now">现在</a>
+            <a href="/experience">318之前</a>
+            <a href="mailto:xiaoliang.blog@proton.me">Email</a>
+          </div>
         </div>
-      </div>
-      <div class="map-legend">
-        <span><span class="dot-home"></span>家</span>
-        <span><span class="dot-visited"></span>去过</span>
-        <span><span class="dot-future"></span>想去</span>
-      </div>
-    </div>
+      </section>
     </div>
 
-    <!-- About Page -->
-    <div class="page" id="page-about">
-      <p class="section-title" style="margin-bottom:32px;">关于</p>
-      <div class="about-text">
-        <p>INFP，手抖脚麻的躯体化患者。没有目标，活着就是目标。喜欢简单的东西，讨厌把事情搞复杂。</p>
-        <p>用 AI 工具做一些小东西，看能不能靠这些养活自己。核心兴趣是 AI 怎么用：不同的 AI 怎么理解人说的话、怎么写东西、怎么帮人做事。</p>
-        <p>正在试着建立一点独立收入，方向大概是 AI 内容、Notion 模板、Plant-AI。</p>
-        <p>还在熬。还在等。像冬天的种子，不知道春天会不会来，但还埋在土里。</p>
-      </div>
-      <div class="social-links">
-        <a href="mailto:xiaoliang.blog@proton.me" rel="noopener noreferrer">Email</a>
-        <a href="experience.html">318 之前</a>
-      </div>
-    </div>
-
-    <div class="footer">
-      © 2026 xiaoliang. 用好奇心驱动。
-    </div>
-  </div>
+    <footer class="footer">© 2026 xiaoliang. 用好奇心驱动。</footer>
+  </main>
 
   <script>
-    /* ===== 相册灯箱 ===== */
-    const photos = [];
-
-    function toggleSection(name) {
-      const sec = document.getElementById(name + '-section');
-      const btn = document.getElementById(name + '-btn');
-      sec.classList.toggle('open');
-      btn.classList.toggle('open');
-      if (name === 'photo' && sec.classList.contains('open') && document.getElementById('photo-grid').children.length === 0) {
-        renderPhotos();
-      }
+    const body = document.body;
+    const btn = document.getElementById('theme-btn');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      body.classList.add('light');
+      btn.textContent = '☀';
     }
-
-    function renderPhotos() {
-      const grid = document.getElementById('photo-grid');
-      if (!photos.length) {
-        grid.style.display = 'block';
-        grid.innerHTML = '<p style="color:var(--text-dim);font-size:13px;line-height:2;">照片先空着。不是所有东西都要放出来。</p>';
-        return;
-      }
-      photos.forEach(src => {
-        const a = document.createElement('a');
-        a.href = '#';
-        a.onclick = () => openLightbox(src);
-        const img = document.createElement('img');
-        img.src = src;
-        img.loading = 'lazy';
-        a.appendChild(img);
-        grid.appendChild(a);
-      });
-    }
-
-    function openLightbox(src) {
-      const lb  = document.getElementById('lightbox');
-      const img = document.getElementById('lightbox-img');
-      img.classList.remove('loaded');
-      img.src = src;
-      img.onload = () => img.classList.add('loaded');
-      lb.classList.add('open');
-    }
-
-    function closeLightbox(e) {
-      if (e.target === e.currentTarget || e.target.classList.contains('lightbox-close')) {
-        document.getElementById('lightbox').classList.remove('open');
-      }
-    }
-
-    /* 键盘关闭灯箱 */
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox'), currentTarget: document.getElementById('lightbox') });
-    });
-
-    /* ===== 打字机效果 ===== */
-    const lines = [
-      'INFP，躯体化。没有目标，活着就是目标。',
-      '只有被需要，才有价值。',
-      '像冬天的种子，不知道春天会不会来。',
-      '还在熬。还在等。',
-      '手抖是从什么时候开始的，已经说不清了。',
-      '不再等318了。走路，吹风，看山。',
-    ];
-
-    let lineIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const textEl = document.getElementById('typewriter-text');
-    const typeSpeed = 80;
-    const deleteSpeed = 40;
-    const pauseEnd = 2000;
-    const pauseStart = 600;
-
-    function type() {
-      const current = lines[lineIndex];
-
-      if (!isDeleting) {
-        textEl.textContent = current.substring(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === current.length) {
-          setTimeout(() => { isDeleting = true; type(); }, pauseEnd);
-          return;
-        }
-        setTimeout(type, typeSpeed);
-      } else {
-        textEl.textContent = current.substring(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 0) {
-          isDeleting = false;
-          lineIndex = (lineIndex + 1) % lines.length;
-          setTimeout(type, pauseStart);
-          return;
-        }
-        setTimeout(type, deleteSpeed);
-      }
-    }
-
-    setTimeout(type, 500);
-
-    /* ===== 地图 ===== */
-    const mapPlaces = [
-      { x: 560, y: 280, name: '营口', desc: '2000.06 · 出生', type: 'home' },
-      { x: 480, y: 430, name: '北京', desc: '', type: 'visited' },
-      { x: 420, y: 460, name: '上海', desc: '', type: 'visited' },
-      { x: 320, y: 440, name: '雅安', desc: '旅居', type: 'lived' },
-      { x: 540, y: 310, name: '武汉', desc: '', type: 'visited' },
-      { x: 500, y: 400, name: '杭州', desc: '', type: 'visited' },
-      { x: 240, y: 350, name: '拉萨', desc: '318 · 未来', type: 'future' },
-      { x: 360, y: 440, name: '昆明', desc: '', type: 'visited' },
-      { x: 600, y: 380, name: '广州', desc: '', type: 'visited' },
-      { x: 440, y: 340, name: '重庆', desc: '', type: 'visited' },
-    ];
-
-    const dotsGroup = document.getElementById('map-dots');
-    const tooltip = document.getElementById('map-tooltip');
-    const mapSvg = document.getElementById('china-map');
-
-    mapPlaces.forEach(p => {
-      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      dot.setAttribute('cx', p.x);
-      dot.setAttribute('cy', p.y);
-      dot.setAttribute('r', p.type === 'home' ? 5 : 3.5);
-      dot.setAttribute('fill', p.type === 'home' ? 'var(--accent)' : p.type === 'visited' ? 'rgba(255,255,255,0.5)' : 'rgba(201,169,110,0.5)');
-      dot.setAttribute('class', 'map-dot');
-      dot.setAttribute('data-name', p.name);
-      dot.setAttribute('data-desc', p.desc);
-
-      dot.addEventListener('mouseenter', (e) => showTooltip(e, p));
-      dot.addEventListener('mouseleave', hideTooltip);
-      dotsGroup.appendChild(dot);
-    });
-
-    function showTooltip(e, p) {
-      if (!p.desc) return;
-      tooltip.querySelector('.tt-name').textContent = p.name;
-      tooltip.querySelector('.tt-desc').textContent = p.desc;
-      tooltip.classList.add('visible');
-      const rect = mapSvg.getBoundingClientRect();
-      const svgX = p.x * (rect.width / 800);
-      const svgY = p.y * (rect.height / 560);
-      tooltip.style.left = (rect.left + svgX + 12) + 'px';
-      tooltip.style.top = (rect.top + svgY - 16) + 'px';
-    }
-
-    function hideTooltip() {
-      tooltip.classList.remove('visible');
-    }
-
-    /* ===== Page Navigation ===== */
-    function showPage(name) {
-      // Hide all pages
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      // Show target
-      const target = document.getElementById('page-' + name);
-      if (target) target.classList.add('active');
-      // Update nav
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        a.classList.toggle('active', a.dataset.page === name);
-      });
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    /* ===== Theme Toggle ===== */
-    function toggleTheme() {
-      document.body.classList.toggle('light');
-      const isLight = document.body.classList.contains('light');
-      document.getElementById('theme-btn').textContent = isLight ? '☀' : '☽';
+    btn.addEventListener('click', () => {
+      body.classList.toggle('light');
+      const isLight = body.classList.contains('light');
+      btn.textContent = isLight ? '☀' : '☽';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    }
-
-    // Restore theme on load
-    (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'light') {
-        document.body.classList.add('light');
-        const btn = document.getElementById('theme-btn');
-        if (btn) btn.textContent = '☀';
-      }
-    })();
-
-    // Restore nav page on load (from experience/now navigation)
-    (function() {
-      const page = localStorage.getItem('navPage');
-      if (page && page !== 'home') {
-        localStorage.removeItem('navPage');
-        showPage(page);
-      }
-    })();
-
-    /* ===== Progress Bar ===== */
-    (function() {
-      const bar = document.getElementById('progress-bar');
-      window.addEventListener('scroll', () => {
-        const h = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
-      }, {passive: true});
-    })();
-
-    /* ===== Particles ===== */
-    (function() {
-      const canvas = document.getElementById('particles');
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-      const count = 40;
-
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.2 + 0.4,
-          vx: (Math.random() - 0.5) * 0.15,
-          vy: (Math.random() - 0.5) * 0.15 - 0.08,
-          o: Math.random() * 0.5 + 0.2
-        });
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const isLight = document.body.classList.contains('light');
-        const color = isLight ? '0,0,0' : '255,255,255';
-        particles.forEach(p => {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0) p.x = canvas.width;
-          if (p.x > canvas.width) p.x = 0;
-          if (p.y < 0) p.y = canvas.height;
-          if (p.y > canvas.height) p.y = 0;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(' + color + ',' + p.o + ')';
-          ctx.fill();
-        });
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
-
-    /* ===== Command Palette ===== */
-    (function() {
-      const overlay = document.getElementById('cmd-overlay');
-      const input = document.getElementById('cmd-input');
-      const results = document.getElementById('cmd-results');
-
-      const commands = [
-        {label:'首页', hint:'Home', icon:'⌂', action:()=>showPage('home')},
-        {label:'关于', hint:'About', icon:'○', action:()=>showPage('about')},
-        {label:'Now', hint:'Page', icon:'●', action:()=>{window.location='now.html'}},
-        {label:'318之前', hint:'Article', icon:'—', action:()=>{window.location='experience.html'}},
-        {label:'切换主题', hint:'Theme', icon:'◐', action:()=>toggleTheme()},
-      ];
-
-      let selected = -1;
-
-      function render(filter) {
-        const q = (filter||'').toLowerCase();
-        const filtered = commands.filter(c => c.label.toLowerCase().includes(q) || c.hint.toLowerCase().includes(q));
-        results.innerHTML = filtered.map((c,i) =>
-          '<button class="cmd-result'+(i===selected?' selected':'')+'" data-idx="'+i+'">'+
-          '<span class="cmd-icon">'+c.icon+'</span>'+
-          '<span class="cmd-label">'+c.label+'</span>'+
-          '<span class="cmd-hint">'+c.hint+'</span></button>'
-        ).join('');
-        results.querySelectorAll('.cmd-result').forEach(el => {
-          el.addEventListener('click', () => {
-            const idx = parseInt(el.dataset.idx);
-            if (filtered[idx]) { close(); filtered[idx].action(); }
-          });
-        });
-        return filtered;
-      }
-
-      function open() {
-        overlay.classList.add('open');
-        input.value = '';
-        selected = -1;
-        render('');
-        setTimeout(()=>input.focus(), 50);
-      }
-
-      function close() {
-        overlay.classList.remove('open');
-      }
-
-      input.addEventListener('input', () => {
-        selected = -1;
-        render(input.value);
-      });
-
-      input.addEventListener('keydown', (e) => {
-        const items = results.querySelectorAll('.cmd-result');
-        if (e.key === 'ArrowDown') { e.preventDefault(); selected = Math.min(selected+1, items.length-1); render(input.value); }
-        if (e.key === 'ArrowUp') { e.preventDefault(); selected = Math.max(selected-1, -1); render(input.value); }
-        if (e.key === 'Enter' && selected >= 0) {
-          const el = items[selected];
-          const idx = parseInt(el.dataset.idx);
-          const filtered = commands.filter(c => c.label.toLowerCase().includes(input.value.toLowerCase()) || c.hint.toLowerCase().includes(input.value.toLowerCase()));
-          if (filtered[idx]) { close(); filtered[idx].action(); }
-        }
-        if (e.key === 'Escape') close();
-      });
-
-      overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-      document.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey||e.metaKey) && e.key === 'k') { e.preventDefault(); open(); }
-      });
-    })();
+    });
   </script>
 </body>
 </html>

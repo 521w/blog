@@ -4,163 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Now — xiaoliang</title>
-  <meta name="description" content="现在在做什么、在读什么、在想什么。">
+  <meta name="description" content="xiaoliang 现在在做什么、在想什么，以及目前的生活状态。">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0b0b10">
+  <link rel="canonical" href="https://blog.xiaoliangzou.eu.cc/now">
   <meta property="og:title" content="Now — xiaoliang">
-  <meta property="og:description" content="现在在做什么、在读什么、在想什么。">
+  <meta property="og:description" content="现在在做什么、在想什么，以及目前的生活状态。">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta property="og:url" content="https://blog.xiaoliangzou.eu.cc/now">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b0b10'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
   <style>
-    :root {
-      --bg: #0a0a0f;
-      --bg-soft: #0f0f14;
-      --text: #f0f0f5;
-      --text-muted: #8a8a95;
-      --text-dim: #5a5a65;
-      --accent: #c9a96e;
-      --line: rgba(255,255,255,0.06);
-      --card: rgba(255,255,255,0.03);
-    }
-
-    .light {
-      --bg: #fafafa;
-      --bg-soft: #f5f5f0;
-      --text: #171717;
-      --text-muted: #525252;
-      --text-dim: #a3a3a3;
-      --accent: #8b6914;
-      --line: rgba(0,0,0,0.08);
-      --card: rgba(0,0,0,0.02);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      padding: 40px 24px 80px;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    .content { max-width: 640px; margin: 0 auto; }
-
-    .nav {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 64px; padding-bottom: 16px;
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-logo {
-      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--text); text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 24px; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
-    .nav-links a { color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--text); }
-    .theme-toggle {
-      background: none; border: 1px solid var(--line); color: var(--text-dim);
-      width: 32px; height: 32px; border-radius: 6px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; transition: all 0.3s;
-    }
-    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
-
-    h1 {
-      font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700;
-      margin-bottom: 8px; letter-spacing: 0.04em; color: var(--text);
-    }
-    .updated {
-      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300;
-      letter-spacing: 0.15em; color: var(--text-dim); margin-bottom: 48px;
-    }
-    .divider { width: 48px; height: 1px; background: var(--accent); margin-bottom: 48px; }
-
-    .section { margin-bottom: 48px; }
-    .section-label {
-      font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
-      letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-dim);
-      margin-bottom: 16px;
-    }
-    .section p {
-      font-family: 'Noto Serif SC', serif; font-size: 16px;
-      color: var(--text-muted); line-height: 2.2; margin-bottom: 12px;
-    }
-    .section a { color: var(--accent); text-decoration: none; }
-    .section a:hover { text-decoration: underline; }
-
-    .footer {
-      margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line);
-      text-align: center; font-size: 11px; color: var(--text-dim); font-weight: 300;
-    }
+    :root { color-scheme: dark; --bg:#0b0b10; --text:#ededf2; --muted:#a1a1aa; --dim:#6f6f7a; --accent:#c9a96e; --line:rgba(237,237,242,.08); --panel:rgba(237,237,242,.035); }
+    .light { color-scheme: light; --bg:#f7f6f2; --text:#1c1b19; --muted:#5d5a53; --dim:#938e82; --accent:#7d5f18; --line:rgba(28,27,25,.1); --panel:rgba(28,27,25,.035); }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; padding:40px 22px 72px; background:radial-gradient(circle at 50% -10%, rgba(201,169,110,.12), transparent 34rem), var(--bg); color:var(--text); font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .3s ease,color .3s ease; }
+    .wrap { width:min(100%,680px); margin:0 auto; }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:clamp(52px,10vw,86px); padding-bottom:16px; border-bottom:1px solid var(--line); }
+    .logo { color:var(--text); text-decoration:none; font-size:12px; font-weight:650; letter-spacing:.22em; text-transform:uppercase; }
+    .nav-right { display:flex; align-items:center; gap:18px; }
+    .nav-links { display:flex; gap:18px; }
+    .nav-links a,.theme { color:var(--dim); text-decoration:none; font:inherit; font-size:12px; letter-spacing:.08em; border:0; background:transparent; cursor:pointer; }
+    .nav-links a:hover,.nav-links a.active,.theme:hover { color:var(--text); }
+    .theme { width:32px; height:32px; border:1px solid var(--line); border-radius:8px; display:grid; place-items:center; }
+    h1 { margin:0 0 10px; font-family:ui-serif, Georgia, "Times New Roman", "Songti SC", serif; font-size:clamp(38px,8vw,58px); line-height:1.08; letter-spacing:-.025em; }
+    .updated { margin:0 0 42px; color:var(--dim); font-size:12px; letter-spacing:.16em; text-transform:uppercase; }
+    .rule { width:48px; height:1px; background:var(--accent); margin:0 0 48px; }
+    .section { margin-bottom:42px; padding-bottom:34px; border-bottom:1px solid var(--line); }
+    .section:last-of-type { border-bottom:0; }
+    .label { margin:0 0 14px; color:var(--dim); font-size:12px; font-weight:650; letter-spacing:.18em; text-transform:uppercase; }
+    p { margin:0 0 14px; color:var(--muted); font-family:ui-serif, Georgia, "Times New Roman", "Songti SC", serif; font-size:17px; line-height:2; text-wrap:pretty; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .footer { margin-top:64px; padding-top:18px; border-top:1px solid var(--line); text-align:center; color:var(--dim); font-size:11px; }
+    @media (max-width:560px){ body{padding-inline:18px}.nav{align-items:flex-start}.nav-right{gap:12px}.nav-links{gap:12px} }
   </style>
 </head>
 <body>
-  <div class="content">
-
-    <nav class="nav">
-      <a href="index.html" class="nav-logo">xiaoliang</a>
-      <div style="display:flex;align-items:center;gap:20px;">
+  <main class="wrap">
+    <nav class="nav" aria-label="主导航">
+      <a class="logo" href="/">xiaoliang</a>
+      <div class="nav-right">
         <div class="nav-links">
-          <a href="index.html">首页</a>
-          <a href="index.html" onclick="localStorage.setItem('navPage','about')">关于</a>
-          <a href="now.html" class="active">Now</a>
+          <a href="/">首页</a>
+          <a href="/#about">关于</a>
+          <a class="active" href="/now">Now</a>
         </div>
-        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="切换主题">☽</button>
+        <button class="theme" id="theme-btn" type="button" aria-label="切换主题">☽</button>
       </div>
     </nav>
 
     <h1>Now</h1>
-    <p class="updated">更新于 2026.06.03</p>
-    <div class="divider"></div>
+    <p class="updated">更新于 2026.06.07</p>
+    <div class="rule"></div>
 
-    <div class="section">
-      <div class="section-label">在做</div>
+    <section class="section">
+      <h2 class="label">在做</h2>
       <p>用 AI 工具做一些小东西，看能不能靠这些养活自己。</p>
-      <p>Plant-AI：用 AI 识别植物病虫害，发图就能有个初步判断。不想搞太复杂，能用就行。</p>
-    </div>
+      <p>Plant-AI 还在。目标很简单：发一张植物病虫害图片，能有一个初步判断。</p>
+    </section>
 
-    <div class="section">
-      <div class="section-label">在读</div>
-      <p>没有在读书。注意力被打碎了，读不了长的东西。偶尔看看 AI 怎么用的帖子，看看别人用 AI 能做什么有意思的事。</p>
-    </div>
+    <section class="section">
+      <h2 class="label">在读</h2>
+      <p>没有稳定读书。注意力被打碎了，长内容读不进去。</p>
+      <p>偶尔看 AI 怎么被别人用起来，尤其是那些不用自己搭复杂系统也能直接产生结果的用法。</p>
+    </section>
 
-    <div class="section">
-      <div class="section-label">在想</div>
-      <p>318 什么时候能走。躯体化什么时候能好。能不能靠自己做的东西养活自己。</p>
-      <p>被需要和被抛弃之间的那条线，到底是谁画的。</p>
-    </div>
+    <section class="section">
+      <h2 class="label">在想</h2>
+      <p>能不能靠自己做的东西养活自己。能不能少一点复杂，多一点真实需求。</p>
+      <p>被需要和被珍惜之间，差的到底是什么。</p>
+    </section>
 
-    <div class="section">
-      <div class="section-label">状态</div>
-      <p>还在熬。还在等。手还是抖的，但还在做事。</p>
+    <section class="section">
+      <h2 class="label">状态</h2>
       <p>雅安。离开成都了，怕待下去活不久。</p>
-    </div>
+      <p>手还是抖的，但还在做事。没有目标，活着就是目标。</p>
+    </section>
 
-    <div class="footer">
-      © 2026 xiaoliang. <a href="https://nownownow.com/about" style="color:var(--accent);text-decoration:none;">/now</a> 页面理念来自 indie web。
-    </div>
-  </div>
+    <footer class="footer">© 2026 xiaoliang. <a href="https://nownownow.com/about" rel="noopener noreferrer">/now</a></footer>
+  </main>
 
   <script>
-    function toggleTheme() {
-      document.body.classList.toggle('light');
-      const isLight = document.body.classList.contains('light');
-      document.getElementById('theme-btn').textContent = isLight ? '☀' : '☽';
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    }
-    (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'light') {
-        document.body.classList.add('light');
-        const btn = document.getElementById('theme-btn');
-        if (btn) btn.textContent = '☀';
-      }
-    })();
+    const body=document.body,btn=document.getElementById('theme-btn');
+    if(localStorage.getItem('theme')==='light'){body.classList.add('light');btn.textContent='☀'}
+    btn.addEventListener('click',()=>{body.classList.toggle('light');const l=body.classList.contains('light');btn.textContent=l?'☀':'☽';localStorage.setItem('theme',l?'light':'dark')});
   </script>
 </body>
 </html>

@@ -318,6 +318,11 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
     }
 
+
+    .hero-photo { margin: 28px 0 0; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); }
+    .hero-photo img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; display: block; filter: saturate(.92) contrast(.96); }
+    .site-note { margin-top: 54px; padding: 22px 0 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; line-height: 1.9; }
+    .site-note strong { color: var(--text); font-weight: 500; }
     .home-simple { max-width: 760px; }
     .hero-minimal { padding-top: 64px; padding-bottom: 36px; }
     .simple-status { margin-top: 8px; }
@@ -356,6 +361,9 @@
         <a class="btn primary" href="/travel">看旅行照片</a>
         <a class="btn" href="/more">逛一逛</a>
       </div>
+      <figure class="hero-photo" aria-label="山和路上的风景">
+        <img src="/assets/travel/travel-10.jpg" alt="山和路上的风景" loading="eager" decoding="async">
+      </figure>
     </section>
 
     <section class="status-strip simple-status" aria-label="当前状态">
@@ -377,6 +385,10 @@
         <li><a href="/now"><strong>Now</strong><span>现在在哪里，在做什么。</span></a></li>
         <li><a href="/more"><strong>更多</strong><span>文章、记录和其他页面。</span></a></li>
       </ul>
+    </section>
+
+    <section class="site-note" aria-label="小站说明">
+      <p><strong>这是一个普通人的小站。</strong>放一些生活、照片和还没整理完的自己。</p>
     </section>
   </main>
 

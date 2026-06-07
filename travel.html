@@ -11,6 +11,11 @@
     * { box-sizing:border-box; }
     body { margin:0; background:var(--bg); color:var(--text); font-family: Georgia, 'Times New Roman', 'Noto Serif SC', serif; line-height:1.85; -webkit-font-smoothing:antialiased; }
     .wrap { width:min(1080px, calc(100% - 36px)); margin:0 auto; padding:56px 0 80px; }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+    .brand { color:var(--text); text-decoration:none; font-size:.9rem; letter-spacing:.08em; }
+    .links { display:flex; gap:1rem; flex-wrap:wrap; }
+    .links a { color:var(--muted); text-decoration:none; font-size:.9rem; border-bottom:1px solid transparent; }
+    .links a:hover, .brand:hover { color:var(--text); border-bottom-color:var(--accent); }
     .back { display:inline-block; margin-bottom:52px; color:var(--dim); text-decoration:none; font-size:13px; letter-spacing:.12em; text-transform:uppercase; font-family:Arial, sans-serif; }
     .back:hover { color:var(--accent); }
     header { max-width:680px; margin-bottom:56px; }
@@ -38,7 +43,15 @@
 </head>
 <body>
   <main class="wrap">
-    <a class="back" href="/">← 返回首页</a>
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="/">xiaoliang</a>
+      <div class="links">
+        <a href="/">首页</a>
+        <a href="/more">更多</a>
+        <a href="/travel">照片</a>
+        <a href="/now">Now</a>
+      </div>
+    </nav>
     <header>
       <p class="eyebrow">Travel photos</p>
       <h1>旅行照片</h1>

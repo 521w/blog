@@ -194,7 +194,7 @@
       line-height: 2;
       text-wrap: pretty;
     }
-    .note-list, .timeline, .simple-list { list-style: none; margin: 0; padding: 0; }
+    .note-list, .timeline, .simple-list, .stack-list { list-style: none; margin: 0; padding: 0; }
     .note-list { display: grid; gap: 12px; }
     .note-list li {
       padding: 16px 18px;
@@ -222,6 +222,28 @@
       line-height: 1.9;
     }
     .simple-list li::before { content: "·"; color: var(--accent); margin-right: .55em; }
+    .stack-list { display: grid; gap: 12px; }
+    .stack-list li {
+      display: grid;
+      grid-template-columns: 8rem 1fr;
+      gap: 18px;
+      padding: 15px 0;
+      border-top: 1px solid var(--line);
+    }
+    .stack-list li:last-child { border-bottom: 1px solid var(--line); }
+    .stack-key { color: var(--dim); font-size: 12px; letter-spacing: .1em; }
+    .stack-value { color: var(--muted); font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", serif; line-height: 1.85; }
+    .quote-box {
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      color: var(--muted);
+      font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: 18px;
+      line-height: 2;
+    }
+    .quote-box small { display:block; margin-top:10px; color:var(--dim); font-family:ui-sans-serif, system-ui, sans-serif; font-size:12px; }
     .section { scroll-margin-top: 32px; }
     .section-title {
       margin: 0 0 16px;
@@ -289,7 +311,7 @@
       .hero::after { opacity: .35; }
       .status-strip { grid-template-columns: 1fr; box-shadow: none; }
       .writing-list a { grid-template-columns: 1fr; gap: 4px; }
-      .timeline li { grid-template-columns: 1fr; gap: 4px; }
+      .timeline li, .stack-list li { grid-template-columns: 1fr; gap: 4px; }
       .about { padding: 18px; border-radius: 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -357,9 +379,75 @@
               <span class="writing-meta">2026</span>
             </a>
           </li>
+          <li>
+            <a href="/yaan">
+              <span>
+                <span class="writing-title">雅安这几天</span>
+                <span class="writing-desc">雨、山、慢下来的生活，以及从成都带出来的旧影子。</span>
+              </span>
+              <span class="writing-meta">2026</span>
+            </a>
+          </li>
+          <li>
+            <a href="/ai-player">
+              <span>
+                <span class="writing-title">我是 AI 玩家</span>
+                <span class="writing-desc">不是技术身份，只是用 AI 帮自己试着活下去、做出东西。</span>
+              </span>
+              <span class="writing-meta">2026</span>
+            </a>
+          </li>
         </ul>
       </section>
 
+
+      <section class="section" aria-labelledby="trying-title">
+        <h2 class="section-title" id="trying-title">正在尝试</h2>
+        <ul class="stack-list">
+          <li><span class="stack-key">AI 工具</span><span class="stack-value">把零散想法变成能用的小东西，不追求宏大，先追求真的有用。</span></li>
+          <li><span class="stack-key">内容自媒体</span><span class="stack-value">记录 AI 怎么进入普通人的生活，而不是讲那些离人很远的大词。</span></li>
+          <li><span class="stack-key">Plant-AI</span><span class="stack-value">园林植物病虫害方向还在，想做成发图就能得到初步判断的服务。</span></li>
+          <li><span class="stack-key">独立收入</span><span class="stack-value">不想再只靠外界安排生活，想有一点属于自己的现金流。</span></li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="like-title">
+        <h2 class="section-title" id="like-title">喜欢的东西</h2>
+        <ul class="simple-list">
+          <li>雨后的雅安，山很近，空气像刚洗过。</li>
+          <li>能直接产生结果的 AI 工具，不需要一堆复杂设置。</li>
+          <li>318，路、风、山，还有还没发生的远方。</li>
+          <li>安静的夜里，一个人慢慢把事情想清楚。</li>
+          <li>简单但好用的东西，少一点包装，多一点真实。</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="ai-log-title">
+        <h2 class="section-title" id="ai-log-title">AI 使用记录</h2>
+        <ul class="timeline">
+          <li><span class="time">想法</span><span class="event">把脑子里很乱的念头交给 AI，让它先帮我整理成能看见的形状。</span></li>
+          <li><span class="time">执行</span><span class="event">让 AI 直接做，不停在“步骤”和“教程”里。</span></li>
+          <li><span class="time">验证</span><span class="event">做出来之后再看是不是真的能用，不能用就继续改。</span></li>
+          <li><span class="time">变现</span><span class="event">寻找普通人也能理解、能买单、能直接解决问题的方向。</span></li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="observations-title">
+        <h2 class="section-title" id="observations-title">雅安观察</h2>
+        <ul class="note-list">
+          <li>这里的慢不是摆烂，是城市本身没有那么用力。人走在街上，不会一直觉得自己落后了。</li>
+          <li>雨多的时候，情绪也容易返潮。但山在旁边，看久了，心里那堵墙会安静一点。</li>
+          <li>318 起点这个身份很好。它不催你出发，只告诉你：路在那里，你可以晚一点再走。</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="sentence-title">
+        <h2 class="section-title" id="sentence-title">一句话</h2>
+        <div class="quote-box">
+          我不是空白的人。我只是还在把自己一点点拼回来。
+          <small>写给现在的自己</small>
+        </div>
+      </section>
 
       <section class="section" aria-labelledby="timeline-title">
         <h2 class="section-title" id="timeline-title">时间线</h2>

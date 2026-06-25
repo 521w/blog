@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xiaoliang · 控制台</title>
+  <meta name="description" content="xiaoliang 的个人控制台">
+  <meta name="theme-color" content="#0b0b10">
+  <link rel="canonical" href="https://blog.xiaoliangzou.eu.cc/dashboard.html">
+  <meta property="og:title" content="xiaoliang · 控制台">
+  <meta property="og:description" content="个人控制台">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://blog.xiaoliangzou.eu.cc/dashboard.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b0b10'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
+  <style>
+    :root {
+      --bg: #0b0b10;
+      --bg-card: #111118;
+      --text: #ededf2;
+      --muted: #a1a1aa;
+      --dim: #6f6f7a;
+      --accent: #c9a96e;
+      --accent2: #4a90d9;
+      --accent3: #27ae60;
+      --accent4: #e74c3c;
+      --line: rgba(237,237,242,0.06);
+      --radius: 12px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      padding: 0 16px 40px;
+    }
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; border-bottom: 1px solid var(--line); margin-bottom: 24px;
+    }
+    .header h1 { font-size: 20px; font-weight: 600; letter-spacing: -.3px }
+    .header .time { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums }
+    .header a { color: var(--muted); text-decoration: none; font-size: 13px }
+    .header a:hover { color: var(--accent) }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      padding: 20px;
+      transition: border-color .2s;
+    }
+    .card:hover { border-color: rgba(201,169,110,0.2) }
+    .card-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .card-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .card-title { font-size: 14px; font-weight: 600; color: var(--text) }
+    .card-sub { font-size: 11px; color: var(--dim); margin-top: 2px }
+
+    /* Weather */
+    .weather-main { display: flex; align-items: center; gap: 12px }
+    .weather-temp { font-size: 42px; font-weight: 300; line-height: 1 }
+    .weather-desc { font-size: 13px; color: var(--muted); margin-top: 4px }
+    .weather-detail { display: flex; gap: 16px; margin-top: 12px; font-size: 12px; color: var(--dim) }
+
+    /* Clock */
+    .clock-time { font-size: 48px; font-weight: 200; font-variant-numeric: tabular-nums; letter-spacing: -1px }
+    .clock-date { font-size: 13px; color: var(--muted); margin-top: 4px }
+
+    /* Links */
+    .link-group { margin-bottom: 12px }
+    .link-group:last-child { margin-bottom: 0 }
+    .link-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--dim); margin-bottom: 8px }
+    .link-row { display: flex; flex-wrap: wrap; gap: 6px }
+    .pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 12px; border-radius: 20px;
+      background: rgba(255,255,255,0.04); color: var(--muted);
+      font-size: 12px; text-decoration: none;
+      transition: all .2s;
+    }
+    .pill:hover { background: rgba(201,169,110,0.12); color: var(--accent) }
+
+    /* Status dot */
+    .status { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 4px }
+    .status.online { background: var(--accent3); box-shadow: 0 0 6px rgba(39,174,96,0.4) }
+    .status.offline { background: var(--accent4) }
+
+    /* Map preview */
+    .map-preview {
+      width: 100%; height: 160px; border-radius: 8px; overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .map-preview img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7 }
+
+    /* Quote */
+    .quote { font-size: 14px; font-style: italic; color: var(--muted); line-height: 1.6 }
+    .quote-author { font-size: 12px; color: var(--dim); margin-top: 8px }
+
+    .card-wide { grid-column: span 2 }
+
+    @media (max-width: 640px) {
+      .card-wide { grid-column: span 1 }
+      .grid { grid-template-columns: 1fr }
+    }
+
+    /* 导航 */
+    .nav { display: flex; gap: 4px; }
+    .nav a { padding: 6px 14px; border-radius: 6px; color: var(--muted); text-decoration: none; font-size: 13px; }
+    .nav a.active, .nav a:hover { background: rgba(201,169,110,0.1); color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>xiaoliang</h1>
+    <div style="font-size:12px;color:var(--dim);margin-top:4px">雅安 · 318起点</div>
+  </div>
+  <div class="nav">
+    <a href="index.html">博客</a>
+    <a href="dashboard.html" class="active">控制台</a>
+    <a href="travel.html">旅行</a>
+    <a href="now.html">此刻</a>
+  </div>
+  <div class="time" id="headerTime"></div>
+</div>
+
+<div class="grid">
+
+  <!-- 天气 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(74,144,217,0.12);color:var(--accent2)">🌤</div>
+      <div><div class="card-title">雅安天气</div><div class="card-sub" id="weatherUpdate">加载中…</div></div>
+    </div>
+    <div class="weather-main">
+      <div class="weather-temp" id="weatherTemp">--</div>
+      <div style="font-size:14px;color:var(--muted)">°C</div>
+    </div>
+    <div class="weather-desc" id="weatherDesc">—</div>
+    <div class="weather-detail">
+      <span id="weatherHumidity">💧 --%</span>
+      <span id="weatherWind">💨 --</span>
+    </div>
+  </div>
+
+  <!-- 时钟 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(201,169,110,0.12);color:var(--accent)">🕐</div>
+      <div><div class="card-title">北京时间</div></div>
+    </div>
+    <div class="clock-time" id="clockTime">--:--</div>
+    <div class="clock-date" id="clockDate">—</div>
+  </div>
+
+  <!-- 快捷链接 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(39,174,96,0.12);color:var(--accent3)">🔗</div>
+      <div><div class="card-title">快捷入口</div></div>
+    </div>
+    <div class="link-group">
+      <div class="link-label">常用</div>
+      <div class="link-row">
+        <a class="pill" href="https://github.com/xiao18406156696" target="_blank">🐙 GitHub</a>
+        <a class="pill" href="https://www.notion.so" target="_blank">📝 Notion</a>
+        <a class="pill" href="/318.html">🛣 318情报</a>
+      </div>
+    </div>
+    <div class="link-group">
+      <div class="link-label">项目</div>
+      <div class="link-row">
+        <a class="pill" href="#">🌱 Plant-AI</a>
+        <a class="pill" href="/yaan.html">📍 雅安</a>
+        <a class="pill" href="/travel.html">✈️ 旅行</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 服务状态 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(231,76,60,0.12);color:var(--accent4)">🖥</div>
+      <div><div class="card-title">服务状态</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px" id="services">
+      <div><span class="status online"></span> Hermes Agent <span style="color:var(--dim)">— 运行中</span></div>
+      <div><span class="status online"></span> 博客 <span style="color:var(--dim)">— Cloudflare Pages</span></div>
+      <div><span class="status offline"></span> DS-API <span style="color:var(--dim)">— 已停止</span></div>
+    </div>
+  </div>
+
+  <!-- 位置预览 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(201,169,110,0.12);color:var(--accent)">📍</div>
+      <div><div class="card-title">当前位置</div><div class="card-sub">雅安 · 318国道起点</div></div>
+    </div>
+    <div class="map-preview">
+      <img src="https://staticmap.maptoolkit.net/?center=103.00,29.98&zoom=11&size=600x320&marker=103.00,29.98,red" alt="雅安" onerror="this.parentElement.innerHTML='<div style=color:var(--dim);font-size:13px>🗺 29.98°N, 103.00°E<br>海拔 620m</div>'">
+    </div>
+  </div>
+
+  <!-- 随笔 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:rgba(74,144,217,0.12);color:var(--accent2)">💭</div>
+    </div>
+    <div class="quote" id="quoteText">"一个人知道自己为什么而活，就可以忍受任何一种生活。"</div>
+    <div class="quote-author">— 尼采</div>
+  </div>
+
+</div>
+
+<script>
+// 时钟
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clockTime').textContent = 
+    now.toLocaleTimeString('zh-CN', {hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false});
+  document.getElementById('clockDate').textContent = 
+    now.toLocaleDateString('zh-CN', {year:'numeric', month:'long', day:'numeric', weekday:'long'});
+  document.getElementById('headerTime').textContent = 
+    now.toLocaleTimeString('zh-CN', {hour:'2-digit', minute:'2-digit'});
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// 天气 - Open-Meteo 免费 API，不需要 key
+fetch('https://api.open-meteo.com/v1/forecast?latitude=29.98&longitude=103.00&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=Asia/Shanghai')
+  .then(r => r.json())
+  .then(d => {
+    const c = d.current;
+    document.getElementById('weatherTemp').textContent = Math.round(c.temperature_2m);
+    const codes = {0:'☀️ 晴',1:'🌤 晴',2:'⛅ 多云',3:'☁️ 阴',45:'🌫 雾',51:'🌧 小雨',61:'🌧 雨',71:'❄️ 雪',95:'⛈ 雷暴'};
+    document.getElementById('weatherDesc').textContent = codes[c.weather_code] || '—';
+    document.getElementById('weatherHumidity').textContent = '💧 ' + c.relative_humidity_2m + '%';
+    document.getElementById('weatherWind').textContent = '💨 ' + c.wind_speed_10m + 'km/h';
+    document.getElementById('weatherUpdate').textContent = new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'}) + ' 更新';
+  })
+  .catch(() => {
+    document.getElementById('weatherTemp').textContent = '--';
+    document.getElementById('weatherDesc').textContent = '天气不可用';
+  });
+</script>
+</body>
+</html>

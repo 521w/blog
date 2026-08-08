@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /dashboard
 
 Sitemap: https://blog.xiaoliangzou.eu.cc/sitemap.xml

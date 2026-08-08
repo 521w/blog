@@ -5,125 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>318 情报站 — xiaoliang</title>
   <meta name="description" content="318国道最新资讯自动采集，路况、攻略、风景。">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0b0b10">
+  <link rel="canonical" href="https://blog.xiaoliangzou.eu.cc/318">
+  <meta property="og:title" content="318 情报站 — xiaoliang">
+  <meta property="og:description" content="318国道最新资讯自动采集，路况、攻略、风景。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://blog.xiaoliangzou.eu.cc/318">
+  <meta property="og:image" content="https://blog.xiaoliangzou.eu.cc/assets/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://blog.xiaoliangzou.eu.cc/assets/social-preview.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b0b10'/><text x='16' y='23' font-family='serif' font-size='22' font-weight='700' fill='%23c9a96e' text-anchor='middle'>梁</text></svg>">
+  <link rel="stylesheet" href="/assets/site.css">
   <style>
-    :root { --bg: #0a0a0f; --bg-soft: #0f0f14; --text: #f0f0f5; --text-muted: #8a8a95; --text-dim: #5a5a65; --accent: #c9a96e; --line: rgba(255,255,255,0.06); --card: rgba(255,255,255,0.03); }
-    .light { --bg: #fafafa; --bg-soft: #f5f5f0; --text: #171717; --text-muted: #525252; --text-dim: #a3a3a3; --accent: #8b6914; --line: rgba(0,0,0,0.08); --card: rgba(0,0,0,0.02); }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; -webkit-font-smoothing:antialiased; min-height:100vh; padding:40px 24px 80px; transition:background .4s,color .4s; }
-    .content { max-width:680px; margin:0 auto; }
-    .nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:48px; padding-bottom:16px; border-bottom:1px solid var(--line); }
-    .nav-logo { font-family:'Inter',sans-serif; font-size:13px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--text); text-decoration:none; }
-    .nav-links { display:flex; gap:24px; font-size:12px; font-weight:300; letter-spacing:.1em; text-transform:uppercase; }
-    .nav-links a { color:var(--text-dim); text-decoration:none; transition:color .3s; }
-    .nav-links a:hover { color:var(--text); }
-    .theme-toggle { background:none; border:1px solid var(--line); color:var(--text-dim); width:32px; height:32px; border-radius:6px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:14px; transition:all .3s; }
-    .theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
-    h1 { font-family:'Noto Serif SC',serif; font-size:28px; font-weight:700; margin-bottom:4px; letter-spacing:.04em; color:var(--text); }
-    .subtitle { font-family:'Noto Serif SC',serif; font-size:14px; color:var(--text-dim); margin-bottom:4px; }
-    .updated { font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.15em; color:var(--text-dim); margin-bottom:36px; }
-    .status-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:#4ade80; margin-right:6px; animation:pulse 2s infinite; }
+    .subtitle { margin: 6px 0 0; color: var(--dim); font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", serif; font-size: 15px; }
+    .updated { margin: 10px 0 0; color: var(--dim); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+    .status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; margin-right: 6px; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-    .divider { width:48px; height:1px; background:var(--accent); margin-bottom:36px; }
-    .section { margin-bottom:40px; }
-    .section-label { font-family:'Inter',sans-serif; font-size:10px; font-weight:500; letter-spacing:.3em; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px 20px; }
-    .card p { font-family:'Noto Serif SC',serif; font-size:14px; color:var(--text-muted); line-height:2; margin-bottom:12px; }
-    .card p:last-child { margin-bottom:0; }
-    .sources { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; padding-top:10px; border-top:1px solid var(--line); }
-    .sources a { font-size:11px; color:var(--accent); text-decoration:none; padding:2px 8px; border:1px solid var(--line); border-radius:4px; transition:all .3s; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .sources a:hover { border-color:var(--accent); background:rgba(201,169,110,.08); }
-    .footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--line); text-align:center; font-size:11px; color:var(--text-dim); font-weight:300; }
-    .footer a { color:var(--accent); text-decoration:none; }
+    .card { padding: 16px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+    .card p { margin: 0 0 12px; color: var(--muted); font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", serif; font-size: 15px; line-height: 2; }
+    .card p:last-child { margin-bottom: 0; }
+    .sources { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+    .sources a { font-size: 11px; color: var(--accent); text-decoration: none; padding: 2px 8px; border: 1px solid var(--line); border-radius: 4px; transition: all .3s; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .sources a:hover { border-color: var(--accent); background: rgba(201,169,110,.08); }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "318 情报站 — xiaoliang",
+    "url": "https://blog.xiaoliangzou.eu.cc/318",
+    "description": "318国道最新资讯自动采集，路况、攻略、风景。"
+  }
+  </script>
 </head>
 <body>
-  <div class="content">
-    <nav class="nav">
-      <a href="/" class="nav-logo">xiaoliang</a>
-      <div style="display:flex;align-items:center;gap:20px;">
+  <main class="wrap">
+    <nav class="nav" aria-label="主导航">
+      <a class="logo" href="/">xiaoliang</a>
+      <div class="nav-right">
         <div class="nav-links">
           <a href="/">首页</a>
-          <a href="/now.html">Now</a>
-          <a href="/318.html" style="color:var(--accent)">情报站</a>
+          <a class="active" href="/318">318</a>
+          <a href="/more">更多</a>
+          <a href="/travel">照片</a>
+          <a href="/now">Now</a>
         </div>
-        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="切换主题">☽</button>
+        <button class="theme" id="theme-btn" type="button" aria-label="切换主题">☽</button>
       </div>
     </nav>
-    <h1>🚗 318 情报站</h1>
-    <p class="subtitle">雅安 · 318 起点 · 自动情报</p>
-    <p class="updated"><span class="status-dot"></span>更新于 2026.07.21 15:48 · 自动采集</p>
-    <div class="divider"></div>
-    
-    <div class="section">
-      <div class="section-label">318国道 路况 今日</div>
+
+    <section class="hero sub-hero" aria-labelledby="intel-title">
+      <p class="kicker"><span class="pulse"></span>雅安 · 318 起点 · 自动情报</p>
+      <h1 id="intel-title">318 情报站</h1>
+      <p class="updated"><span class="status-dot"></span>更新于 2026.07.21 15:48 · 自动采集</p>
+    </section>
+
+    <section class="section" aria-labelledby="sec-0">
+      <h2 class="section-title" id="sec-0">318国道 路况 今日</h2>
       <div class="card">
         <p>As of today, 318国道 is open with some sections under temporary traffic control for construction. Check local updates for specific road conditions.</p>
         <div class="sources">
-          <a href="https://www.changdu.gov.cn/cdrmzf/c100359/202311/931ef291841e459f831e50a6a77b9335.shtml" target="_blank" rel="noopener">国道318、317、214最新路况！</a><a href="https://chejiahao.autohome.com.cn/info/6067926" target="_blank" rel="noopener">【交通管制】川藏线317与318最新实时路况总览_车家号_发现车生活_汽车之家</a><a href="http://www.czx318.com/lxrz" target="_blank" rel="noopener">川藏线最新路况-川藏线旅游|川藏线包车/租车/拼车/自驾游路线信息-川藏线318越野车俱乐部</a><a href="https://zh.wikipedia.org/wiki/318%E5%9B%BD%E9%81%93" target="_blank" rel="noopener">318国道 - 维基百科，自由的百科全书</a><a href="https://www.xizanglvyou.org/28021.html" target="_blank" rel="noopener">川藏公路318適合旅遊季節推薦 – 最佳出行時段詳解 - 域龍旅行社</a>
+          <a href="https://www.changdu.gov.cn/cdrmzf/c100359/202311/931ef291841e459f831e50a6a77b9335.shtml" target="_blank" rel="noopener">国道318、317、214最新路况！</a><a href="https://chejiahao.autohome.com.cn/info/6067926" target="_blank" rel="noopener">【交通管制】川藏线317与318最新实时路况总览_车家号_发现车生活_汽车之家</a><a href="http://www.czx318.com/lxrz" target="_blank" rel="noopener">川藏线最新路况-川藏线旅游|川藏线包车/租车/拼车/自驾游路线信息-川藏线318越野车俱乐部</a><a href="https://www.xizanglvyou.org/28021.html" target="_blank" rel="noopener">川藏公路318適合旅遊季節推薦 – 最佳出行時段詳解 - 域龍旅行社</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <div class="section-label">318川藏线 最新消息</div>
+    <section class="section" aria-labelledby="sec-1">
+      <h2 class="section-title" id="sec-1">318川藏线 最新消息</h2>
       <div class="card">
         <p>The latest news on the Sichuan-Tibet Highway (G318) includes recent travel advisories and road conditions, with some sections closed due to weather-related disruptions. Travelers should check for updates before heading out. For the most current information, visit local transportation websites or contact relevant authorities.</p>
         <div class="sources">
-          <a href="http://www.czx318.com/lxrz" target="_blank" rel="noopener">川藏线最新路况</a><a href="https://en.wikipedia.org/wiki/Area_codes_318_and_457" target="_blank" rel="noopener">Area codes 318 and 457 - Wikipedia</a><a href="https://www.findchina.tw/2024/01/Sichuan-Tibet-Highway-Tourism.html" target="_blank" rel="noopener">川藏公路318適合旅遊季節推薦台灣人港澳自駕攻略</a><a href="https://hk.trip.com/moments/poi-chuanzang-highway-13277639" target="_blank" rel="noopener">2026川藏公路 | 墨竹工卡景點指南與旅客實拍 | Trip Moments</a><a href="https://www.chinatibet.tw/lvyougonglue/502.html" target="_blank" rel="noopener">川藏公路: G318進藏旅遊實用攻略，公路進藏必看！</a>
+          <a href="http://www.czx318.com/lxrz" target="_blank" rel="noopener">川藏线最新路况</a><a href="https://www.findchina.tw/2024/01/Sichuan-Tibet-Highway-Tourism.html" target="_blank" rel="noopener">川藏公路318適合旅遊季節推薦台灣人港澳自駕攻略</a><a href="https://hk.trip.com/moments/poi-chuanzang-highway-13277639" target="_blank" rel="noopener">2026川藏公路 | 墨竹工卡景點指南與旅客實拍 | Trip Moments</a><a href="https://www.chinatibet.tw/lvyougonglue/502.html" target="_blank" rel="noopener">川藏公路: G318進藏旅遊實用攻略，公路進藏必看！</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <div class="section-label">318国道 自驾 攻略 2026</div>
+    <section class="section" aria-labelledby="sec-2">
+      <h2 class="section-title" id="sec-2">318国道 自驾 攻略 2026</h2>
       <div class="card">
         <p>The 318 National Highway (川藏线) is a challenging self-drive route from Chengdu to Lhasa, with high altitudes and steep mountain roads. Essential preparations include high-clearance vehicles, high-altitude medications, and safety gear. The best travel time is September to October for stable weather and beautiful fall colors.</p>
         <div class="sources">
-          <a href="https://roamfun.com/travel-guide/chuanzangxian/318-chuanzangxian-self-driving-car-guide" target="_blank" rel="noopener">川藏线自驾选车与装备全攻略：SUV还是轿车？2026最新进藏指南 | 川藏线旅游攻略 | RoamFun</a><a href="https://tw.trip.com/moments/theme/poi-chuanzang-highway-13277639-comprehensive-guides-993136" target="_blank" rel="noopener">2026 川藏公路詳盡攻略推薦</a><a href="https://czx.aiketour.com/raiders/show_689.html" target="_blank" rel="noopener">2026年川藏线自驾全攻略_川藏线自驾游攻略大全-爱客纯玩</a><a href="https://mgoods.taobao.com/t/lvyougonglve_16971/648f73ddecb5fd48694c2e85c26dc480.html" target="_blank" rel="noopener">2025年自驾中国全境路线全攻略：G219、G331、G228、川藏线、318国道详细解读-旅游攻略-淘宝好物网</a><a href="https://hk.trip.com/moments/theme/poi-chuanzang-highway-13277639-comprehensive-guides-993136" target="_blank" rel="noopener">2026 川藏公路詳細攻略推薦</a>
+          <a href="https://roamfun.com/travel-guide/chuanzangxian/318-chuanzangxian-self-driving-car-guide" target="_blank" rel="noopener">川藏线自驾选车与装备全攻略：SUV还是轿车？2026最新进藏指南 | 川藏线旅游攻略 | RoamFun</a><a href="https://tw.trip.com/moments/theme/poi-chuanzang-highway-13277639-comprehensive-guides-993136" target="_blank" rel="noopener">2026 川藏公路詳盡攻略推薦</a><a href="https://czx.aiketour.com/raiders/show_689.html" target="_blank" rel="noopener">2026年川藏线自驾全攻略_川藏线自驾游攻略大全-爱客纯玩</a><a href="https://hk.trip.com/moments/theme/poi-chuanzang-highway-13277639-comprehensive-guides-993136" target="_blank" rel="noopener">2026 川藏公路詳細攻略推薦</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <div class="section-label">雅安 318 起点</div>
+    <section class="section" aria-labelledby="sec-3">
+      <h2 class="section-title" id="sec-3">雅安 318 起点</h2>
       <div class="card">
         <p>The 318 National Highway starts in Shanghai and ends in Nyalam, Tibet, spanning over 5,300 kilometers. It is known for its scenic beauty and is often called a "must-drive" road. The highway passes through Sichuan province, including the city of Ya'an.</p>
         <div class="sources">
-          <a href="https://www.mta.com.tw/print_itinerary.asp?seq=5417" target="_blank" rel="noopener">【游遍中國自由行】中國最美的318川藏公路十三日【中國國航</a><a href="http://sc.people.com.cn/n2/2025/0319/c345167-41168841.html" target="_blank" rel="noopener">此生必驾318！再次出发 他们说……</a><a href="https://zh.wikipedia.org/wiki/318%E5%9B%BD%E9%81%93" target="_blank" rel="noopener">318國道- 維基百科，自由的百科全書</a><a href="https://zh.wikipedia.org/zh-hans/318%E5%9B%BD%E9%81%93" target="_blank" rel="noopener">318国道 - 维基百科，自由的百科全书</a><a href="https://sichuan.scol.com.cn/ggxw/202408/82581762.html" target="_blank" rel="noopener">市州观察丨雅安：交旅融合焕新国道318线，让旅游风景道更具质感_四川在线</a>
+          <a href="http://sc.people.com.cn/n2/2025/0319/c345167-41168841.html" target="_blank" rel="noopener">此生必驾318！再次出发 他们说……</a><a href="https://zh.wikipedia.org/wiki/318%E5%9B%BD%E9%81%93" target="_blank" rel="noopener">318國道- 維基百科，自由的百科全書</a><a href="https://zh.wikipedia.org/zh-hans/318%E5%9B%BD%E9%81%93" target="_blank" rel="noopener">318国道 - 维基百科，自由的百科全书</a><a href="https://sichuan.scol.com.cn/ggxw/202408/82581762.html" target="_blank" rel="noopener">市州观察丨雅安：交旅融合焕新国道318线，让旅游风景道更具质感_四川在线</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <div class="section-label">川藏线 风景 小众景点</div>
+    <section class="section" aria-labelledby="sec-4">
+      <h2 class="section-title" id="sec-4">川藏线 风景 小众景点</h2>
       <div class="card">
         <p>The Sichuan-Tibet Highway offers stunning scenery, with highlights including the 72 bends and unique spots like the small lake in措普溝. Travelers can enjoy the route by car, motorcycle, or bicycle. The best time to visit is from May to October.</p>
         <div class="sources">
-          <a href="https://hk.trip.com/moments/poi-chuanzang-highway-13277639" target="_blank" rel="noopener">2026川藏公路| 墨竹工卡景點指南與旅客實拍</a><a href="https://www.travel168.com.tw/TripIntroductionAgent?TripNo=A20191008000012&Date=2024%2F11%2F30&type=CI&Gno=CNCC241101" target="_blank" rel="noopener">【四川】中國最美的朝聖公路~川藏318國道13 天 -> 福洋旅遊 - 最專業的旅遊專家-提供大陸、日本、韓國、歐洲等團體旅遊、Mini Tour</a><a href="http://china.chinadaily.com.cn/2016-07/08/content_26020927.htm" target="_blank" rel="noopener">行走在318国道川藏线小记：奇险之路有奇美 - 中国日报网</a><a href="https://www.tibetcn.com/wenda/4314.html" target="_blank" rel="noopener">川藏线最佳旅游方式选择别纠结，跟团or包车or自驾怎么选一文告诉您</a><a href="http://ah.sina.cn/travel/2021-10-28/detail-iktzscyy2228408.d.html" target="_blank" rel="noopener">漫游皖美秋色|自驾皖南“川藏线”这里最美秋色已上线！_手机新浪网</a>
+          <a href="https://hk.trip.com/moments/poi-chuanzang-highway-13277639" target="_blank" rel="noopener">2026川藏公路| 墨竹工卡景點指南與旅客實拍</a><a href="https://www.tibetcn.com/wenda/4314.html" target="_blank" rel="noopener">川藏线最佳旅游方式选择别纠结，跟团or包车or自驾怎么选一文告诉您</a><a href="http://china.chinadaily.com.cn/2016-07/08/content_26020927.htm" target="_blank" rel="noopener">行走在318国道川藏线小记：奇险之路有奇美 - 中国日报网</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <div class="section-label">318国道 封路 交通</div>
+    <section class="section" aria-labelledby="sec-5">
+      <h2 class="section-title" id="sec-5">318国道 封路 交通</h2>
       <div class="card">
         <p>318国道封路由地质灾害和施工引起，交通管制期间建议绕行。最新信息显示，米拉山沿线解除管制，通行恢复。川藏线G318路况良好，但高海拔段需注意天气和施工。</p>
         <div class="sources">
-          <a href="https://www.thecover.cn/news/srD7JH8zFO%2BH90qSdq8Jkw==" target="_blank" rel="noopener">注意！雅康高速泸定至康定段、318国道康定姑咱镇路段实施交通管制 - 封面新闻</a><a href="https://m.cd.bendibao.com/traffic/181572.shtm" target="_blank" rel="noopener">2024年国道248国道318及、国道350线大中修工程交通管制通告- 成都本地宝</a><a href="http://www.cneb.gov.cn/2016/03/23/ARTI1458719207995395.shtml" target="_blank" rel="noopener">川藏公路318国道米拉山沿线解除交通管制</a><a href="https://zh.wikipedia.org/wiki/318%E5%9B%BD%E9%81%93" target="_blank" rel="noopener">318國道- 維基百科，自由的百科全書</a><a href="https://www.tibetway.com/overland-to-tibet/chengdu-lhasa-overland-southernroute.html" target="_blank" rel="noopener">2026川藏线G318进藏旅游攻略：怎么玩？几天好？ - 西藏旅游</a>
+          <a href="https://www.thecover.cn/news/srD7JH8zFO%2BH90qSdq8Jkw==" target="_blank" rel="noopener">注意！雅康高速泸定至康定段、318国道康定姑咱镇路段实施交通管制 - 封面新闻</a><a href="https://m.cd.bendibao.com/traffic/181572.shtm" target="_blank" rel="noopener">2024年国道248国道318及、国道350线大中修工程交通管制通告- 成都本地宝</a><a href="http://www.cneb.gov.cn/2016/03/23/ARTI1458719207995395.shtml" target="_blank" rel="noopener">川藏公路318国道米拉山沿线解除交通管制</a><a href="https://zh.wikipedia.org/wiki/318%E5%9B%BD%E9%81%93" target="_blank" rel="noopener">318國道- 維基百科，自由的百科全書</a>
         </div>
       </div>
-    </div>
-    <div class="footer">
+    </section>
+
+    <footer class="footer">
       <p>© 2026 xiaoliang · 情报站由机器人每8小时自动更新</p>
-      <p style="margin-top:8px;font-size:10px;color:var(--text-dim)">数据来源：Tavily Search</p>
-    </div>
-  </div>
+      <p style="margin-top:8px;font-size:10px;color:var(--dim)">数据来源：Tavily Search</p>
+    </footer>
+  </main>
   <script>
-    function toggleTheme(){document.body.classList.toggle('light');const l=document.body.classList.contains('light');document.getElementById('theme-btn').textContent=l?'☀':'☽';localStorage.setItem('theme',l?'light':'dark')}
-    (function(){const s=localStorage.getItem('theme');if(s==='light'){document.body.classList.add('light');const b=document.getElementById('theme-btn');if(b)b.textContent='☀'}})();
+    const body = document.body;
+    const btn = document.getElementById('theme-btn');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') { body.classList.add('light'); btn.textContent = '☀'; }
+    btn.addEventListener('click', () => {
+      body.classList.toggle('light');
+      const isLight = body.classList.contains('light');
+      btn.textContent = isLight ? '☀' : '☽';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
   </script>
 </body>
 </html>
